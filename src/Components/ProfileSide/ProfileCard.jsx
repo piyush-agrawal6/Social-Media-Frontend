@@ -1,7 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ProfileCard = () => {
+  const {
+    data: { user },
+  } = useSelector((store) => store.auth);
   return (
     <div className="profileCard">
       <div className="profileImage">
@@ -15,25 +19,25 @@ const ProfileCard = () => {
         />
       </div>
       <div className="profileName">
-        <span>Joy's Profile</span>
-        <span>MERN Stack Developer</span>
+        <span>{user.name}</span>
+        <span>{user.workAt ? user.workAt : "Profile Incomplete"}</span>
       </div>
       <div className="profileFollow">
         <hr />
         <div>
           <div className="profileFollowers">
-            <span>69</span>
+            <span>{user.followers.length}</span>
             <span>Followers</span>
           </div>
           <div className="verticalLine"></div>
           <div className="profileFollowers">
-            <span>0</span>
+            <span>{user.following.length}</span>
             <span>Followings</span>
           </div>
         </div>
         <hr />
       </div>
-      <span>
+      <span className="profileLink">
         <Link to="/profile">Profile</Link>
       </span>
     </div>

@@ -3,8 +3,12 @@ import "./ProfileInfo.css";
 import { BiEdit } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
 import { Button, Modal } from "antd";
+import { useSelector } from "react-redux";
 
 const ProfileInfo = () => {
+  const {
+    data: { user },
+  } = useSelector((store) => store.auth);
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const showModal = () => {
@@ -41,25 +45,25 @@ const ProfileInfo = () => {
         <span>
           <b>Status</b>
         </span>
-        <span>Single AF</span>
+        <span>{user.relationship ? user.relationship : "No data"}</span>
       </div>
       <div className="info">
         <span>
           <b>Gender</b>
         </span>
-        <span>Male</span>
+        <span>{user.gender !== "empty" ? user.gender : "No data"}</span>
       </div>
       <div className="info">
         <span>
           <b>Location</b>
         </span>
-        <span>Odisha</span>
+        <span>{user.livesin ? user.livesin : "No data"}</span>
       </div>
       <div className="info">
         <span>
           <b>Work As</b>
         </span>
-        <span>MERN Stack dev</span>
+        <span>{user.workAt ? user.workAt : "No data"}</span>
       </div>
       <div className="info">
         <p>

@@ -22,11 +22,30 @@
   height: 100vh;
   overflow: auto;
 }
+.hide {
+  display: none;
+}
+@media screen and (max-width: 1150px) {
+  .profilePage {
+    width: 90%;
+    grid-template-columns: auto 24rem;
+  }
+}
 @media screen and (max-width: 1000px) {
   .profilePage {
+    width: 95%;
     grid-template-columns: auto;
   }
-  .profileSide {
+  .profileLeft {
     display: none;
+  }
+  .hide {
+    width: 100%;
+    display: block;
+  }
+}
+@media screen and (max-width: 600px) {
+  .profilePage {
+    width: 100%;
   }
 }

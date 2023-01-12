@@ -143,3 +143,7 @@
   border: 2px solid rgb(11, 82, 152);
   color: rgb(11, 82, 152);
 }
+.profileLink a {
+  /* text-decoration: none; */
+  color: rgb(11, 82, 152);;
+}

@@ -8,11 +8,13 @@
 }
 @media screen and (max-width: 1150px) {
   .homePage {
+    width: 90%;
     grid-template-columns: 20rem auto;
   }
 }
 @media screen and (max-width: 1000px) {
   .homePage {
+    width: 100%;
     grid-template-columns: auto;
   }
   .profileSide {
