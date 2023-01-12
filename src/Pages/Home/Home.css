@@ -23,16 +23,21 @@
 }
 @media screen and (max-width: 920px) {
   .homePage {
-    padding-top: 3.5rem;
+    padding-top: 4.2rem;
   }
 }
 @media screen and (max-width: 520px) {
   .homePage {
-    padding-top: 3.5rem;
+    padding-top: 3.9rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .homePage {
+    padding-top: 3.6rem;
   }
 }
 @media screen and (max-width: 321px) {
   .homePage {
-    padding-top: 2.5rem;
+    padding-top: 2.6rem;
   }
 }
