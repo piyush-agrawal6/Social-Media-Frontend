@@ -15,6 +15,7 @@ export const registerUser = (userData) => async (dispatch) => {
       payload: {
         message: res.data.message,
         user: res.data.user,
+        token: res.data.token,
       },
     });
   } catch (error) {
@@ -41,6 +42,7 @@ export const authLogin = (data) => async (dispatch) => {
       payload: {
         message: res.data.message,
         user: res.data.user,
+        token: res.data.token,
       },
     });
   } catch (error) {

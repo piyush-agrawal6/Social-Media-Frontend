@@ -7,12 +7,18 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import { CgUserlane } from "react-icons/cg";
-import { FiLogIn } from "react-icons/fi";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
 import logo from "./logo.jpg";
 import sm from "./sm.jpg";
+import { useDispatch, useSelector } from "react-redux";
 const Navbar = () => {
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
+  const {
+    data: { isAuthenticated },
+  } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+
   const handleClick = (param = "", value = "") => {
     setClick(!click);
     if (param === "" || value === "") {
@@ -83,12 +89,25 @@ const Navbar = () => {
               <p className="display">Chats</p>
             </Link>
           </div>
-          <div className="navIcons">
-            <Link to="/signup">
-              <FiLogIn className="sideIcons" />
-              <p className="display">Signup</p>
-            </Link>
-          </div>
+          {isAuthenticated ? (
+            <div className="navIcons">
+              <Link
+                onClick={() => {
+                  dispatch({ type: "AUTH_LOGOUT" });
+                }}
+              >
+                <FiLogOut className="sideIcons" />
+                <p className="display">Logout</p>
+              </Link>
+            </div>
+          ) : (
+            <div className="navIcons">
+              <Link to="/signup">
+                <FiLogIn className="sideIcons" />
+                <p className="display">Signup</p>
+              </Link>
+            </div>
+          )}
           <div className="navIcons">
             <Link to="/setting">
               <IoMdSettings className="sideIcons" />

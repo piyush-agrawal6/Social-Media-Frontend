@@ -1,17 +1,36 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "../Components/Navbar/Navbar";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Login/Signup";
 const AllRoutes = () => {
+  const {
+    data: { isAuthenticated },
+  } = useSelector((store) => store.auth);
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? <Navigate to="home" /> : <Navigate to="signup" />
+          }
+        />
+        <Route
+          path="/signup"
+          element={isAuthenticated ? <Navigate to="../home" /> : <Signup />}
+        />
+        <Route
+          path="/login"
+          element={isAuthenticated ? <Navigate to="../home" /> : <Login />}
+        />
+        <Route
+          path="/home"
+          element={isAuthenticated ? <Home /> : <Navigate to="../signup" />}
+        />
       </Routes>
     </div>
   );

@@ -1,13 +1,13 @@
 import * as types from "./types";
 
-// const TOKEN = localStorage.getItem("token");
+const TOKEN = localStorage.getItem("token");
 const initialState = {
   userLogin: { loading: false, error: false, message: "" },
   userRegister: { loading: false, error: false, message: "" },
   userLogout: { message: "" },
   data: {
-    isAuthenticated: false,
-    // token: TOKEN,
+    isAuthenticated: !!TOKEN,
+    token: TOKEN,
     user: null,
   },
 };
@@ -20,13 +20,13 @@ export default function authReducer(state = initialState, { type, payload }) {
         userLogin: { loading: true, error: false },
       };
     case types.LOGIN_USER_SUCCESS:
-      // localStorage.setItem("token", payload.token);
+      localStorage.setItem("token", payload.token);
       return {
         ...state,
         userLogin: { loading: false, error: false, message: payload.message },
         data: {
-          isAuthenticated: true,
-          // token: payload.token,
+          isAuthenticated: payload.token ? true : false,
+          token: payload.token,
           user: payload.user,
         },
       };
@@ -42,13 +42,13 @@ export default function authReducer(state = initialState, { type, payload }) {
         userLogin: { loading: false, error: false, message: "" },
       };
     case types.AUTH_LOGOUT:
-      // localStorage.removeItem("token");
+      localStorage.removeItem("token");
       return {
         ...state,
         userLogout: { message: "Logout Successfully" },
         data: {
           isAuthenticated: false,
-          // token: null,
+          token: null,
           user: null,
         },
       };
@@ -59,6 +59,7 @@ export default function authReducer(state = initialState, { type, payload }) {
         userRegister: { loading: true, error: false },
       };
     case types.REGISTER_USER_SUCCESS:
+      localStorage.setItem("token", payload.token);
       return {
         ...state,
         userRegister: {
@@ -67,8 +68,8 @@ export default function authReducer(state = initialState, { type, payload }) {
           message: payload.message,
         },
         data: {
-          isAuthenticated: true,
-          // token: payload.token,
+          isAuthenticated: payload.token ? true : false,
+          token: payload.token,
           user: payload.user,
         },
       };

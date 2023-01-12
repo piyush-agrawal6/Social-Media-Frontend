@@ -17,18 +17,20 @@ const Login = () => {
   console.log("authState: ", authState);
 
   React.useEffect(() => {
-    if (authState.userLogin.message === "User does not exist") {
+    if (authState.userLogin.message === "User doesn't Exist") {
+      alert("User does not exist");
+      dispatch({ type: "AUTH_LOGIN_RESET" });
     }
     if (authState.userLogin.message === "Wrong Password") {
-      alert("Wrong");
+      alert("Incorrect Credentials");
       dispatch({ type: "AUTH_LOGIN_RESET" });
     }
-    if (authState.userLogin.message === "Successful") {
-      // dispatch(getCart());
+    if (authState.userLogin.message === "User Login Successful") {
+      alert("Login Successful");
       dispatch({ type: "AUTH_LOGIN_RESET" });
       setTimeout(() => {
-        navigate("/");
-      }, 2000);
+        navigate("/home");
+      }, 1000);
     }
   }, [dispatch, navigate, authState]);
   const handleFormChange = (e) => {

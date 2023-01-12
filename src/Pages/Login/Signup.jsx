@@ -10,6 +10,7 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
+    gender: "empty",
   });
   const dispatch = useDispatch();
   // const auth = useSelector((store) => store.auth);
@@ -21,12 +22,18 @@ const Signup = () => {
   React.useEffect(() => {
     if (authState.message === "User already exist") {
       dispatch({ type: "AUTH_REGISTER_RESET" });
-    }
-    if (authState.message === "User Registered Successfully") {
-      dispatch({ type: "AUTH_REGISTER_RESET" });
+      alert("User already exist, please log in.");
       setTimeout(() => {
         navigate("/login");
       }, 2000);
+    }
+    if (authState.message === "Successful") {
+      dispatch({ type: "AUTH_REGISTER_RESET" });
+
+      alert("User Registered Successfully");
+      setTimeout(() => {
+        navigate("/home");
+      }, 1000);
     }
   }, [dispatch, navigate, authState.message]);
 
@@ -35,6 +42,7 @@ const Signup = () => {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
     if (
       formData.name.trim() !== "" &&
       formData.email.trim() !== "" &&
@@ -80,6 +88,12 @@ const Signup = () => {
                 type="text"
                 placeholder="@username"
               />
+              <select name="gender" onChange={handleFormChange}>
+                <option value="empty">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
               <input
                 name="email"
                 value={formData.email}
