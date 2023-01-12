@@ -9,7 +9,7 @@ import { IoMdSettings } from "react-icons/io";
 import { CgUserlane } from "react-icons/cg";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import logo from "./logo.jpg";
-import sm from "./sm.jpg";
+import sm from "./1.jpg";
 import { useDispatch, useSelector } from "react-redux";
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -51,11 +51,13 @@ const Navbar = () => {
           <nav className="menu" style={click ? styleB : styleA}>
             <ul className="menu-main">
               <p className="mobItem">
-                <Link>SHOP FOR</Link>
+                <Link>Profile Setting</Link>
                 <MdClose className="cross" onClick={() => handleClick()} />
               </p>
               <p className="mobItem" onClick={handleClick}>
-                <Link to="/signup">Login / Signup</Link>
+                <Link to="/signup">
+                  {isAuthenticated ? <p>Logout</p> : "Signup"}
+                </Link>
               </p>
               <p className="mobItem" onClick={handleClick}>
                 <Link to="/admin">Admin</Link>
@@ -63,17 +65,20 @@ const Navbar = () => {
               <p className="mobItem" onClick={handleClick}>
                 <Link to="/profile">Profile</Link>
               </p>
-              <p className="mobItem" onClick={handleClick}>
-                <Link to="/orders">Orders</Link>
-              </p>
             </ul>
           </nav>
         </div>
         <div className="nav-item item-right">
-          <div className="navIcons">
+          <div className="navIcons hideAt">
             <Link to="/profile">
               <CgUserlane className="sideIcons" />
               <p className="display">Profile</p>
+            </Link>
+          </div>
+          <div className="navIcons">
+            <Link to="/chats">
+              <GrChat className="sideIcons" />
+              <p className="display">Chats</p>
             </Link>
           </div>
           <div className="navIcons">
@@ -83,14 +88,8 @@ const Navbar = () => {
               <p className="display">Info</p>
             </Link>
           </div>
-          <div className="navIcons">
-            <Link to="/chats">
-              <GrChat className="sideIcons" />
-              <p className="display">Chats</p>
-            </Link>
-          </div>
           {isAuthenticated ? (
-            <div className="navIcons">
+            <div className="navIcons  hideAt">
               <Link
                 onClick={() => {
                   dispatch({ type: "AUTH_LOGOUT" });
@@ -101,14 +100,14 @@ const Navbar = () => {
               </Link>
             </div>
           ) : (
-            <div className="navIcons">
+            <div className="navIcons  hideAt">
               <Link to="/signup">
                 <FiLogIn className="sideIcons" />
                 <p className="display">Signup</p>
               </Link>
             </div>
           )}
-          <div className="navIcons">
+          <div className="navIcons  hideAt">
             <Link to="/setting">
               <IoMdSettings className="sideIcons" />
               <p className="display">Setting</p>

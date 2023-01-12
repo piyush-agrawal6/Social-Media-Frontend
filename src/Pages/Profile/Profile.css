@@ -1,7 +1,7 @@
 .profilePage {
   width: 80%;
   margin: auto;
-  padding-top: 5rem;
+  padding-top: 4.5rem;
   display: grid;
   grid-template-columns: auto 24rem;
 }
@@ -44,8 +44,24 @@
     display: block;
   }
 }
+
+@media screen and (max-width: 920px) {
+  .profilePage {
+    padding-top: 3.5rem;
+  }
+}
 @media screen and (max-width: 600px) {
   .profilePage {
     width: 100%;
+  }
+}
+@media screen and (max-width: 520px) {
+  .profilePage {
+    padding-top: 3.5rem;
+  }
+}
+@media screen and (max-width: 321px) {
+  .profilePage {
+    padding-top: 2.9rem;
   }
 }
