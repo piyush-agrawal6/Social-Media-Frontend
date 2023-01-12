@@ -8,7 +8,7 @@ import { MdClose } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import { CgUserlane } from "react-icons/cg";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
-import logo from "./logo.jpg";
+import logo from "./logo.svg";
 import sm from "./1.jpg";
 import { useDispatch, useSelector } from "react-redux";
 const Navbar = () => {
