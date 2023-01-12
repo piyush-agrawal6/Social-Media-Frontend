@@ -12,7 +12,6 @@ import logo from "./logo.jpg";
 import sm from "./sm.jpg";
 const Navbar = () => {
   const [click, setClick] = useState(false);
-  const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
   const handleClick = (param = "", value = "") => {
     setClick(!click);
@@ -24,11 +23,7 @@ const Navbar = () => {
       return navigate(`/product?${param}=${value}`);
     }
   };
-  const handleSearchClick = () => {
-    if (keyword.trim()) {
-      return navigate(`/product?keyword=${keyword.trim()}`);
-    }
-  };
+
   const styleA = { left: "-100%" };
   const styleB = { left: "0%" };
   return (
