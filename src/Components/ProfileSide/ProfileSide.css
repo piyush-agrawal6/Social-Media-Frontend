@@ -1,0 +1,145 @@
+.profileSide {
+  width: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 10px;
+}
+
+/* Profile Card Section */
+.profileCard {
+  width: 100%;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1rem;
+  overflow-x: clip;
+  background-color: var(--cardColor);
+}
+.profileImage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profileImage > img:nth-of-type(1) {
+  width: 100%;
+  max-height: 6rem;
+  object-fit: cover;
+}
+.profileImage > img:nth-of-type(2) {
+  width: 6rem;
+  position: absolute;
+  border-radius: 50%;
+  bottom: -3rem;
+  box-shadow: var(--profileShadow);
+}
+.profileName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 10px;
+}
+.profileName > span:nth-child(1) {
+  font-weight: bold;
+}
+
+.profileFollow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.profileFollow > hr {
+  width: 85%;
+  border: 0.5px solid var(--hrColor);
+}
+.profileFollow > div {
+  display: flex;
+  gap: 1rem;
+}
+.profileFollowers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+.profileFollowers > span:nth-child(1) {
+  font-weight: bold;
+}
+.profileFollowers > span:nth-child(2) {
+  color: var(--gray);
+  font-size: 13px;
+}
+.verticalLine {
+  height: 100%;
+  border-left: 2px solid var(--hrColor);
+}
+.profileCard > span {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  color: rgb(11, 82, 152);
+}
+
+/* Followers Card Section */
+
+.followersCard {
+  width: calc(100% - 20px);
+  border-radius: 0.7rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  padding: 10px 10px;
+  /* background-color: var(--cardColor); */
+}
+
+.followersDetail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.followersDetail > div:nth-child(1) {
+  display: flex;
+  gap: 10px;
+}
+.followersImg {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+}
+.followersName {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.followersName > span:nth-child(1) {
+  font-weight: bold;
+}
+.followersDetail > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(11, 82, 152);
+  padding: 0.35rem 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.followersDetail > button:hover {
+  background-color: transparent;
+  border: 2px solid rgb(11, 82, 152);
+  color: rgb(11, 82, 152);
+}

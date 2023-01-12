@@ -1,0 +1,22 @@
+.homePage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20rem auto 20rem;
+  padding-top: 4.5rem;
+}
+@media screen and (max-width: 1150px) {
+  .homePage {
+    grid-template-columns: 20rem auto;
+  }
+  .rightSide {
+    display: none;
+  }
+}
+@media screen and (max-width: 850px) {
+  .homePage {
+    grid-template-columns: auto;
+  }
+  .profileSide {
+    display: none;
+  }
+}

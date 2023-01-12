@@ -1,0 +1,117 @@
+.postShare {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--cardColor);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.postShare > img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.postShare > div {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 1rem;
+}
+.postShare > div > input {
+  background-color: var(--inputColor);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+}
+.postOptions {
+  display: flex;
+  justify-content: space-around;
+}
+.postOptionIcon {
+  padding: 5px 10px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  gap: 5px;
+}
+.postOptions > div:nth-child(1) {
+  color: var(--photo);
+}
+.postOptions > div:nth-child(2) {
+  color: var(--video);
+}
+.postOptions > div:nth-child(3) {
+  color: var(--location);
+}
+.postOptions > div:nth-child(4) {
+  color: var(--shedule);
+}
+.postShareButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(11, 82, 152);
+  padding: 5px 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.postShareButton:hover {
+  background-color: transparent;
+  border: 2px solid rgb(11, 82, 152);
+  color: rgb(11, 82, 152);
+  padding: 3px 14px;
+}
+.postInput {
+  display: none;
+}
+.previewImage {
+  position: relative;
+}
+.previewImage > svg {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.previewImage > img {
+  width: 100%;
+  max-height: 20rem;
+  object-fit: contain;
+}
+@media screen and (max-width: 450px) {
+  .postShare > img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .postShare > div {
+    width: 70%;
+  }
+  .postShare > div > input {
+    width: 100%;
+    padding: 8px;
+  }
+  .postOptions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+  }
+  .postOptionIcon {
+    padding: 0px;
+    gap: 0px;
+  }
+  .postOptionIcon span {
+    display: none;
+  }
+  .postOptionIcon > svg {
+    font-size: 1rem;
+  }
+}

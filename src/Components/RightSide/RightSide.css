@@ -1,0 +1,10 @@
+.rightSide {
+  width: calc(100% - 20px) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 10px;
+  border-radius: 1rem;
+  background-color: var(--cardColor);
+}
