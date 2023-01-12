@@ -1,0 +1,23 @@
+.profileInfo {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  background-color: var(--cardColor);
+  border-radius: 1rem;
+  padding: 15px;
+}
+.profileInfo > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.profileInfo > div > span:nth-child(1) {
+  width: 35%;
+}
+.profileInfo > div > p {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

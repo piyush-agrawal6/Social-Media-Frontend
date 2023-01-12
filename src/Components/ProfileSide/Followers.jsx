@@ -4,7 +4,7 @@ import Pro from "./img1.png";
 const Followers = () => {
   return (
     <div className="followersCard">
-      <h3>Your Followers</h3>
+      <h3>Find new peoples</h3>
       <div className="followersDetail">
         <div>
           <img src={Pro} alt="" className="followersImg" />
@@ -45,7 +45,7 @@ const Followers = () => {
         </div>
         <button>Follow</button>
       </div>
-      <h3>See all followers</h3>
+      <h3>See all of them</h3>
     </div>
   );
 };

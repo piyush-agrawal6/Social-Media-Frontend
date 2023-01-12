@@ -1,0 +1,32 @@
+.profilePage {
+  width: 80%;
+  margin: auto;
+  padding-top: 5rem;
+  display: grid;
+  grid-template-columns: auto 24rem;
+}
+.profileLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 10px;
+  background-color: var(--cardColor);
+  border-radius: 1rem;
+  padding: 10px;
+}
+.profileMiddle {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 10px;
+  height: 100vh;
+  overflow: auto;
+}
+@media screen and (max-width: 1000px) {
+  .profilePage {
+    grid-template-columns: auto;
+  }
+  .profileSide {
+    display: none;
+  }
+}

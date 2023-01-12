@@ -5,6 +5,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Login/Signup";
+import Profile from "../Pages/Profile/Profile";
 const AllRoutes = () => {
   const {
     data: { isAuthenticated },
@@ -29,6 +30,14 @@ const AllRoutes = () => {
         />
         <Route
           path="/home"
+          element={isAuthenticated ? <Home /> : <Navigate to="../signup" />}
+        />
+        <Route
+          path="/profile"
+          element={isAuthenticated ? <Profile /> : <Navigate to="../signup" />}
+        />
+        <Route
+          path="*"
           element={isAuthenticated ? <Home /> : <Navigate to="../signup" />}
         />
       </Routes>
