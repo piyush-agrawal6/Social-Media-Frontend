@@ -69,7 +69,7 @@ const Navbar = () => {
           </nav>
         </div>
         <div className="nav-item item-right">
-          <div className="navIcons hideAt">
+          <div className="navIcons">
             <Link to="/profile">
               <CgUserlane className="sideIcons" />
               <p className="display">Profile</p>
