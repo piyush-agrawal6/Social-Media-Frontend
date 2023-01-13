@@ -8,6 +8,8 @@ const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPost());
+    dispatch({ type: "AUTH_LOGIN_RESET" });
+    dispatch({ type: "AUTH_REGISTER_RESET" });
   }, [dispatch]);
   return (
     <div className="homePage">

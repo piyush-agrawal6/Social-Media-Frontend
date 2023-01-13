@@ -43,6 +43,7 @@ const Login = () => {
     <div className="login">
       <div className="loginContainer">
         <div className="loginImage">
+          <h1>HEY THERE !</h1>
           <img src={loginIng} alt="" />
         </div>
         <div className="loginDetail">
@@ -69,6 +70,9 @@ const Login = () => {
                 New User ? <Link to="/signup">Signup .</Link>
               </p>
               <button type="submit">CONTINUE</button>
+              <p>
+                <Link>Forgot Password ?</Link>
+              </p>
             </form>
           </div>
         </div>

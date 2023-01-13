@@ -28,7 +28,6 @@ const Signup = () => {
     }
     if (authState.message === "Successful") {
       dispatch({ type: "AUTH_REGISTER_RESET" });
-
       alert("User Registered Successfully");
       setTimeout(() => {
         navigate("/home");
@@ -65,6 +64,7 @@ const Signup = () => {
     <div className="signup">
       <div className="signupContainer">
         <div className="signupImage">
+          <h1>LETS GET DIVERSE.</h1>
           <img src={signupimg} alt="" />
         </div>
         <div className="signupDetail">

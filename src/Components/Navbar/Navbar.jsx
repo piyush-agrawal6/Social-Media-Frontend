@@ -1,36 +1,20 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { GrChat } from "react-icons/gr";
 import { MdNotifications } from "react-icons/md";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { MdClose } from "react-icons/md";
+import { BsPeopleFill } from "react-icons/bs";
 import { CgUserlane } from "react-icons/cg";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import logo from "./logo.svg";
 import sm from "./1.svg";
 import { useDispatch, useSelector } from "react-redux";
 const Navbar = () => {
-  const [click, setClick] = useState(false);
-  const navigate = useNavigate();
   const {
     data: { isAuthenticated },
   } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
-  const handleClick = (param = "", value = "") => {
-    setClick(!click);
-    if (param === "" || value === "") {
-      setClick(!click);
-    } else if (param === "all") {
-      return navigate("/product");
-    } else {
-      return navigate(`/product?${param}=${value}`);
-    }
-  };
-
-  const styleA = { left: "-100%" };
-  const styleB = { left: "0%" };
   return (
     <div className="container">
       <div className="row v-center">
@@ -46,27 +30,7 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-        <div className="nav-item item-center">
-          <nav className="menu" style={click ? styleB : styleA}>
-            <ul className="menu-main">
-              <p className="mobItem">
-                <Link>Profile Setting</Link>
-                <MdClose className="cross" onClick={() => handleClick()} />
-              </p>
-              <p className="mobItem" onClick={handleClick}>
-                <Link to="/signup">
-                  {isAuthenticated ? <span>Logout</span> : "Signup"}
-                </Link>
-              </p>
-              <p className="mobItem" onClick={handleClick}>
-                <Link to="/admin">Admin</Link>
-              </p>
-              <p className="mobItem" onClick={handleClick}>
-                <Link to="/profile">Profile</Link>
-              </p>
-            </ul>
-          </nav>
-        </div>
+        <div className="nav-item item-center"></div>
         <div className="nav-item item-right">
           <div className="navIcons">
             <Link to="/profile">
@@ -81,6 +45,12 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="navIcons">
+            <Link to="/chats">
+              <BsPeopleFill className="sideIcons" />
+              <p className="display">People</p>
+            </Link>
+          </div>
+          <div className="navIcons">
             <Link to="/notifications">
               <MdNotifications className="sideIcons" />
               <span>1</span>
@@ -88,7 +58,7 @@ const Navbar = () => {
             </Link>
           </div>
           {isAuthenticated ? (
-            <div className="navIcons  hideAt">
+            <div className="navIcons">
               <Link
                 onClick={() => {
                   dispatch({ type: "AUTH_LOGOUT" });
@@ -99,16 +69,13 @@ const Navbar = () => {
               </Link>
             </div>
           ) : (
-            <div className="navIcons  hideAt">
+            <div className="navIcons">
               <Link to="/signup">
                 <FiLogIn className="sideIcons" />
                 <p className="display">Signup</p>
               </Link>
             </div>
           )}
-          <div className="navIcons hamburger">
-            <RxHamburgerMenu className="sideIcons" onClick={handleClick} />
-          </div>
         </div>
       </div>
     </div>

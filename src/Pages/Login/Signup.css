@@ -1,6 +1,6 @@
 .signup {
-  padding-top: 2rem;
-  height: 100vh;
+  padding-top: 3rem;
+  height: 95vh;
   display: flex;
   align-items: center;
   background-color: #efefef;
@@ -14,6 +14,11 @@
 }
 .signupImage {
   width: 70%;
+}
+.signupImage h1{
+  padding: 10px 30px;
+  color: rgb(11, 82, 152);
+  font-size: 40px;
 }
 .signupImage img {
   width: 100%;
@@ -31,15 +36,17 @@
 span {
   color: rgb(57, 57, 57);
 }
-.signupDetail > div:nth-child(2) input {
-  width: 90%;
+.signupDetail > div:nth-child(2) input,
+select {
+  width: 100%;
   padding: 10px;
-  margin: 0.7rem 0;
+  margin: 0.7rem auto;
   font-size: 15px;
   letter-spacing: 1px;
   outline: none;
   border: 1px solid rgb(187, 187, 187);
   color: gray;
+  box-sizing: border-box;
 }
 .signupDetail > div:nth-child(2) button {
   width: 100%;

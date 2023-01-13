@@ -97,7 +97,7 @@ const ProfileInfo = () => {
             </Button>,
           ]}
         >
-          <form>
+          <form className="inputForm">
             <input
               name="name"
               value={formData.name}
@@ -177,6 +177,7 @@ const ProfileInfo = () => {
         placement="left"
         onClose={onClose}
         open={on}
+        className="accountDrawer"
       >
         <p onClick={handleUserDelete}>Delete Account</p>
         <p>Change Password</p>
