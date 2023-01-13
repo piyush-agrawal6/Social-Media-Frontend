@@ -20,29 +20,33 @@ const SinglePost = ({ e }) => {
   return (
     <div className="post">
       <img src={e.image} alt="" />
+      <div className="postDetails">
+        <b>{e.name}</b>
+        <span>{e.desc}</span>
+      </div>
       <div className="postReact">
         {likes ? (
-          <BsHeartFill
-            onClick={() => {
-              handleLike(e._id);
-            }}
-          />
+          <div>
+            {liked}
+            <BsHeartFill
+              onClick={() => {
+                handleLike(e._id);
+              }}
+            />
+          </div>
         ) : (
-          <BsHeart
-            onClick={() => {
-              handleLike(e._id);
-            }}
-          />
+          <div>
+            {liked}
+            <BsHeart
+              onClick={() => {
+                handleLike(e._id);
+              }}
+            />
+          </div>
         )}
-        <BiCommentDetail />
-      </div>
-      <span>{liked} likes</span>
-      <span>{e.comment.length} comments</span>
-      <div className="postDetails">
-        <span>
-          <b>{e.name}</b>
-        </span>
-        <span>{e.desc}</span>
+        <div>
+          <BiCommentDetail />
+        </div>
       </div>
     </div>
   );

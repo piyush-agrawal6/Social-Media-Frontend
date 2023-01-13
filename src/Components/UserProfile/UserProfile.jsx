@@ -68,7 +68,7 @@ const UserProfile = () => {
           Edit <AiOutlineEdit />
         </p>
       </div>
-      <div className="profileName">
+      <div className="userProfileName">
         <span>{user.name}</span>
         <span>{user.workAt ? user.workAt : "Profile Incomplete"}</span>
       </div>
