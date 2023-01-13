@@ -3,6 +3,7 @@ import { BiCommentDetail } from "react-icons/bi";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost } from "../../Redux/post/action";
+import Comment from "./Comment";
 
 const SinglePost = ({ e }) => {
   const {
@@ -47,6 +48,9 @@ const SinglePost = ({ e }) => {
         <div>
           <BiCommentDetail />
         </div>
+      </div>
+      <div>
+        <Comment />
       </div>
     </div>
   );
