@@ -63,7 +63,7 @@ export const updateUser = (data, id) => async (dispatch) => {
       data
     );
     console.log(res.data);
-    dispatch({ type: types.UPDATE_USER_SUCCESS, payload: res.data });
+    // dispatch({ type: types.UPDATE_USER_SUCCESS, payload: res.data });
   } catch (error) {
     console.log(error);
   }
@@ -92,6 +92,7 @@ export const deleteUser = (userid, admin) => async (dispatch) => {
         userAdminstatus: admin,
       }
     );
+    console.log(res);
     dispatch({ type: types.DELETE_USER_SUCCESS });
   } catch (error) {
     console.log(error);

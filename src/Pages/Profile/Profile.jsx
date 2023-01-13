@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./Profile.css";
 import Followers from "../../Components/ProfileSide/Followers";
-import ProfileCard from "../../Components/ProfileSide/ProfileCard";
 import StartPost from "../../Components/PostSide/StartPost";
 import Post from "../../Components/PostSide/Post";
 import ProfileInfo from "./ProfileInfo";
