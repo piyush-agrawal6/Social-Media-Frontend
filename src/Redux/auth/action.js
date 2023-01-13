@@ -55,6 +55,18 @@ export const authLogin = (data) => async (dispatch) => {
   }
 };
 
+//get all user
+export const getUser = () => async (dispatch) => {
+  try {
+    const res = await axios.get(
+      "https://busy-jade-sawfish-cape.cyclic.app/user/alluser"
+    );
+    dispatch({ type: types.GET_USER_SUCCESS, payload: res.data.Alluser });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // logout user
 export const authLogout = () => async (dispatch) => {
   try {

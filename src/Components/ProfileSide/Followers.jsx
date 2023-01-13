@@ -1,24 +1,33 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../Redux/auth/action";
 import Pro from "./img1.png";
 
 const Followers = () => {
-  const {
-    data: { user },
-  } = useSelector((store) => store.auth);
+  const { allUser } = useSelector((store) => store.auth);
+  console.log(allUser);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
   return (
     <div className="followersCard">
       <h3>Find new peoples</h3>
-      <div className="followersDetail">
-        <div>
-          <img src={Pro} alt="" className="followersImg" />
-          <div className="followersName">
-            <span>{user.name}</span>
-            <span>{user.username}</span>
+      {allUser?.map((e, i) => {
+        return (
+          <div className="followersDetail">
+            <div>
+              <img src={e.profilePicture} alt="" className="followersImg" />
+              <div className="followersName">
+                <span>{e.name}</span>
+                <span>{e.username}</span>
+              </div>
+            </div>
+            <button>Follow</button>
           </div>
-        </div>
-        <button>Follow</button>
-      </div>
+        );
+      })}
       <h3>See all of them</h3>
     </div>
   );

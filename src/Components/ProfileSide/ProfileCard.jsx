@@ -9,14 +9,8 @@ const ProfileCard = () => {
   return (
     <div className="profileCard">
       <div className="profileImage">
-        <img
-          src="https://images.unsplash.com/photo-1673205194019-55ac9f0a0899?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          alt=""
-        />
-        <img
-          src="https://avatars.githubusercontent.com/u/100460788?v=4"
-          alt=""
-        />
+        <img src={user.coverPicture} alt="coverPic" />
+        <img src={user.profilePicture} alt="profilePic" />
       </div>
       <div className="profileName">
         <span>{user.name}</span>

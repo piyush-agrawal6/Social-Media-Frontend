@@ -5,6 +5,7 @@ const initialState = {
   userLogin: { loading: false, error: false, message: "" },
   userRegister: { loading: false, error: false, message: "" },
   userLogout: { message: "" },
+  allUser: [],
   data: {
     isAuthenticated: !!TOKEN,
     token: TOKEN,
@@ -78,7 +79,11 @@ export default function authReducer(state = initialState, { type, payload }) {
         ...state,
         userRegister: { loading: false, error: true, message: payload.message },
       };
-
+    case types.GET_USER_SUCCESS:
+      return {
+        ...state,
+        allUser: payload,
+      };
     case "AUTH_REGISTER_RESET":
       return {
         ...state,

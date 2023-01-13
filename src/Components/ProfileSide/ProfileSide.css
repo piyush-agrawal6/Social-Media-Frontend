@@ -32,6 +32,7 @@
 }
 .profileImage > img:nth-of-type(2) {
   width: 6rem;
+  height: 6rem;
   position: absolute;
   border-radius: 50%;
   bottom: -3rem;
@@ -92,14 +93,16 @@
 /* Followers Card Section */
 
 .followersCard {
-  width: calc(100% - 20px);
+  width: calc(100% - 30px);
   border-radius: 0.7rem;
   gap: 1rem;
   display: flex;
   flex-direction: column;
   font-size: 13px;
-  padding: 10px 10px;
-  /* background-color: var(--cardColor); */
+  padding: 15px;
+  background-color: var(--cardColor);
+  height: 65vh;
+  overflow: auto;
 }
 
 .followersDetail {
@@ -144,5 +147,5 @@
   color: rgb(11, 82, 152);
 }
 .profileLink a {
-  color: rgb(11, 82, 152);;
+  color: rgb(11, 82, 152);
 }

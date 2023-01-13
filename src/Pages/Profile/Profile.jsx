@@ -20,9 +20,9 @@ const Profile = () => {
     <div className="profilePage">
       <div className="profileMiddle">
         <ProfileCard />
-        <diV className="hide">
+        <div className="hide">
           <ProfileInfo />
-        </diV>
+        </div>
         <StartPost />
         <Post data={myPost} />
       </div>

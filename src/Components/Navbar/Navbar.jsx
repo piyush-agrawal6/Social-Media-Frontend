@@ -56,7 +56,7 @@ const Navbar = () => {
               </p>
               <p className="mobItem" onClick={handleClick}>
                 <Link to="/signup">
-                  {isAuthenticated ? <p>Logout</p> : "Signup"}
+                  {isAuthenticated ? <span>Logout</span> : "Signup"}
                 </Link>
               </p>
               <p className="mobItem" onClick={handleClick}>

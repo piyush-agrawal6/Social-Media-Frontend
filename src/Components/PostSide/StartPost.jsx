@@ -41,6 +41,7 @@ const StartPost = () => {
       return alert("Please select a file");
     }
     let postData = {
+      name:user.name,
       userId: user._id,
       desc,
       image,
