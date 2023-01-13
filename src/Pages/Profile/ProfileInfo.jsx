@@ -181,7 +181,13 @@ const ProfileInfo = () => {
       >
         <p onClick={handleUserDelete}>Delete Account</p>
         <p>Change Password</p>
-        <p>Logout</p>
+        <p
+          onClick={() => {
+            dispatch({ type: "AUTH_LOGOUT" });
+          }}
+        >
+          Logout
+        </p>
       </Drawer>
     </div>
   );

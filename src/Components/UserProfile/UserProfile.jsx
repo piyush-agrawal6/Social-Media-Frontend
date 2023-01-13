@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineEdit } from "react-icons/ai";
 import "./UserProfile.css";
 import { RxCross2 } from "react-icons/rx";
+import { updateUser } from "../../Redux/auth/action";
 const UserProfile = () => {
   const {
     data: { user },
@@ -29,12 +30,17 @@ const UserProfile = () => {
     setImage(file.secure_url);
     setLoading(false);
   };
+  const dispatch = useDispatch();
   const updateCover = (e) => {
     e.preventDefault();
     if (image == null) {
       return alert("Please select a file");
     }
-    console.log(image);
+    const coverData = {
+      coverPicture: image,
+      userid: user._id,
+    };
+    dispatch(updateUser(coverData, user._id));
     setImg(null);
   };
   const updateProfile = (e) => {
@@ -42,7 +48,11 @@ const UserProfile = () => {
     if (image == null) {
       return alert("Please select a file");
     }
-    console.log(image);
+    const profileData = {
+      profilePicture: image,
+      userid: user._id,
+    };
+    dispatch(updateUser(profileData, user._id));
     setImg(null);
   };
   return (

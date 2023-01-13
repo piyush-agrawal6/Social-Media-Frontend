@@ -15,7 +15,7 @@
 .signupImage {
   width: 70%;
 }
-.signupImage h1{
+.signupImage h1 {
   padding: 10px 30px;
   color: rgb(11, 82, 152);
   font-size: 40px;
@@ -85,7 +85,7 @@ select {
 }
 @media (max-width: 570px) {
   .signup {
-    padding-top: 0rem;
+    padding-top: 2rem;
   }
   .signupContainer {
     width: 320px;
@@ -100,6 +100,7 @@ select {
 @media (max-width: 350px) {
   .signup {
     background-color: white;
+    padding-top: 2rem;
   }
   .signupContainer {
     width: 280px;
