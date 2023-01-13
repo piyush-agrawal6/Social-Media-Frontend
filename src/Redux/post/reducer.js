@@ -18,6 +18,7 @@ export default function postReducer(state = initialState, { type, payload }) {
         ...state,
         postLoading: false,
         post: [...state.post, payload],
+        myPost: [...state.myPost, payload],
       };
     case types.GET_POST_REQUEST:
       return {

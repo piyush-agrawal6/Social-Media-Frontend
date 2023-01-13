@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import PostSide from "../../Components/PostSide/PostSide";
 import ProfileSide from "../../Components/ProfileSide/ProfileSide";
+import { getPost } from "../../Redux/post/action";
 import "./Home.css";
 const Home = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPost());
+  }, [dispatch]);
   return (
     <div className="homePage">
       <ProfileSide />

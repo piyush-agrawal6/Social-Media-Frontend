@@ -7,6 +7,7 @@ import Post from "../../Components/PostSide/Post";
 import ProfileInfo from "./ProfileInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { userPost } from "../../Redux/post/action";
+import UserProfile from "../../Components/UserProfile/UserProfile";
 const Profile = () => {
   const {
     data: { user },
@@ -19,7 +20,7 @@ const Profile = () => {
   return (
     <div className="profilePage">
       <div className="profileMiddle">
-        <ProfileCard />
+        <UserProfile />
         <div className="hide">
           <ProfileInfo />
         </div>

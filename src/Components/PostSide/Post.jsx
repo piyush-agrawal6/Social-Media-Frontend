@@ -3,6 +3,7 @@ import "./Post.css";
 import { useDispatch } from "react-redux";
 import { getPost } from "../../Redux/post/action";
 import SinglePost from "./SinglePost";
+import img from "./nopost.webp";
 const Post = ({ data }) => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -10,9 +11,15 @@ const Post = ({ data }) => {
   }, [dispatch]);
   return (
     <div className="postsBox">
-      {data?.map((e, i) => {
-        return <SinglePost e={e} key={i} />;
-      })}
+      {data.length > 0 ? (
+        data.map((e, i) => {
+          return <SinglePost e={e} key={i} />;
+        })
+      ) : (
+        <div className="noPost">
+          <img src={img} alt="" />
+        </div>
+      )}
     </div>
   );
 };

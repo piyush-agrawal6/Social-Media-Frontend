@@ -5,7 +5,6 @@ import { GrChat } from "react-icons/gr";
 import { MdNotifications } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
-import { IoMdSettings } from "react-icons/io";
 import { CgUserlane } from "react-icons/cg";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import logo from "./logo.svg";
@@ -107,12 +106,6 @@ const Navbar = () => {
               </Link>
             </div>
           )}
-          <div className="navIcons  hideAt">
-            <Link to="/setting">
-              <IoMdSettings className="sideIcons" />
-              <p className="display">Setting</p>
-            </Link>
-          </div>
           <div className="navIcons hamburger">
             <RxHamburgerMenu className="sideIcons" onClick={handleClick} />
           </div>

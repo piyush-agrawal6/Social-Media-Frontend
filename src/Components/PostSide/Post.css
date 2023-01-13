@@ -1,3 +1,12 @@
+.noPost {
+  background-color: var(--cardColor);
+}
+.noPost img {
+  width: 100%;
+  height: 30rem;
+  object-fit: contain;
+}
+
 .postsBox {
   display: flex;
   flex-direction: column;

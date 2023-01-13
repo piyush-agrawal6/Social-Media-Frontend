@@ -11,7 +11,7 @@ const Followers = () => {
   return (
     <div className="followersCard">
       <h3>Find new peoples</h3>
-      {/* {allUser?.map((e, i) => {
+      {allUser?.map((e, i) => {
         return (
           <div className="followersDetail" key={i}>
             <div>
@@ -24,7 +24,7 @@ const Followers = () => {
             <button>Follow</button>
           </div>
         );
-      })} */}
+      })}
       <h3>See all of them</h3>
     </div>
   );
