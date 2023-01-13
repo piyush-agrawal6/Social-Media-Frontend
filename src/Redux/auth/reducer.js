@@ -92,6 +92,16 @@ export default function authReducer(state = initialState, { type, payload }) {
           user: payload,
         },
       };
+    case types.DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        userLogout: { message: "Logout Successfully" },
+        data: {
+          isAuthenticated: false,
+          token: null,
+          user: null,
+        },
+      };
     case "AUTH_REGISTER_RESET":
       return {
         ...state,

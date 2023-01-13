@@ -79,6 +79,23 @@ export const getUser = () => async (dispatch) => {
   }
 };
 
+//get all user
+export const deleteUser = (userid, admin) => async (dispatch) => {
+  console.log(userid);
+  try {
+    const res = await axios.delete(
+      `https://busy-jade-sawfish-cape.cyclic.app/user/${userid}`,
+      {
+        userid,
+        userAdminstatus: admin,
+      }
+    );
+    dispatch({ type: types.DELETE_USER_SUCCESS });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // logout user
 export const authLogout = () => async (dispatch) => {
   try {

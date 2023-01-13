@@ -4,7 +4,7 @@ import { BiEdit } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Drawer, Modal } from "antd";
-import { updateUser } from "../../Redux/auth/action";
+import { deleteUser, updateUser } from "../../Redux/auth/action";
 
 const ProfileInfo = () => {
   const {
@@ -71,6 +71,9 @@ const ProfileInfo = () => {
     } else {
       alert("Please enter all required fields");
     }
+  };
+  const handleUserDelete = () => {
+    dispatch(deleteUser(user._id, user.isAdmin));
   };
   return (
     <div className="profileInfo">
@@ -169,10 +172,15 @@ const ProfileInfo = () => {
           <IoMdSettings />
         </p>
       </div>
-      <Drawer title="Basic Drawer" placement="left" onClose={onClose} open={on}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Drawer
+        title="Account Settings"
+        placement="left"
+        onClose={onClose}
+        open={on}
+      >
+        <p onClick={handleUserDelete}>Delete Account</p>
+        <p>Change Password</p>
+        <p>Logout</p>
       </Drawer>
     </div>
   );
