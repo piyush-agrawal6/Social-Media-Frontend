@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../Redux/auth/action";
-import Pro from "./img1.png";
 
 const Followers = () => {
   const { allUser } = useSelector((store) => store.auth);
