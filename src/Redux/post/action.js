@@ -10,7 +10,6 @@ export const createPost = (data) => async (dispatch) => {
       data
     );
     dispatch({ type: types.CREATE_POST_SUCCESS, payload: res.data.postData });
-    console.log("res: ", res.data.postData);
   } catch (error) {
     console.log(error);
   }
@@ -40,7 +39,6 @@ export const userPost = (id) => async (dispatch) => {
       type: types.GET_CURRENT_USER_POST_SUCCESS,
       payload: res.data,
     });
-    console.log("res: ", res.data);
   } catch (error) {
     console.log(error);
   }
@@ -49,15 +47,10 @@ export const userPost = (id) => async (dispatch) => {
 // like dislike post
 export const likePost = (postId, id) => async (dispatch) => {
   try {
-    dispatch({ type: types.LIKE_POST_REQUEST });
     const res = await axios.put(
       `https://busy-jade-sawfish-cape.cyclic.app/post/${postId}/like`,
       { userid: id }
     );
-    // dispatch({
-    //   type: types.LIKE_POST_SUCCESS,
-    //   payload: res.data,
-    // });
     console.log("res: ", res.data);
   } catch (error) {
     console.log(error);

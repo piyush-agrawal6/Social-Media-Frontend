@@ -41,7 +41,7 @@ const StartPost = () => {
       return alert("Please select a file");
     }
     let postData = {
-      name:user.name,
+      name: user.name,
       userId: user._id,
       desc,
       image,
@@ -53,10 +53,7 @@ const StartPost = () => {
   };
   return (
     <div className="postShare">
-      <img
-        src="https://avatars.githubusercontent.com/u/100460788?v=4"
-        alt="profile"
-      />
+      <img src={user.profilePicture} alt="profile" />
       <div className="postInput">
         <input
           value={desc}

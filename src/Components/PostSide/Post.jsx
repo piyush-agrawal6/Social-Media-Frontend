@@ -12,7 +12,7 @@ const Post = ({ data }) => {
   return (
     <div className="postsBox">
       {data?.map((e, i) => {
-        return <SinglePost e={e} />;
+        return <SinglePost e={e} key={i} />;
       })}
     </div>
   );

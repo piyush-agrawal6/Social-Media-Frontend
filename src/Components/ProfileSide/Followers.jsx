@@ -4,7 +4,6 @@ import { getUser } from "../../Redux/auth/action";
 
 const Followers = () => {
   const { allUser } = useSelector((store) => store.auth);
-  console.log(allUser);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUser());
@@ -14,7 +13,7 @@ const Followers = () => {
       <h3>Find new peoples</h3>
       {allUser?.map((e, i) => {
         return (
-          <div className="followersDetail">
+          <div className="followersDetail" key={i}>
             <div>
               <img src={e.profilePicture} alt="" className="followersImg" />
               <div className="followersName">

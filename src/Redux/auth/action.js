@@ -9,7 +9,6 @@ export const registerUser = (userData) => async (dispatch) => {
       `https://busy-jade-sawfish-cape.cyclic.app/auth/register`,
       userData
     );
-    console.log("res: ", res.data);
     dispatch({
       type: types.REGISTER_USER_SUCCESS,
       payload: {
@@ -36,7 +35,6 @@ export const authLogin = (data) => async (dispatch) => {
       "https://busy-jade-sawfish-cape.cyclic.app/auth/login",
       data
     );
-    console.log(res.data);
     dispatch({
       type: types.LOGIN_USER_SUCCESS,
       payload: {
