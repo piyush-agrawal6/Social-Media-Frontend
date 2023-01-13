@@ -5,7 +5,6 @@ import { getPost } from "../../Redux/post/action";
 import SinglePost from "./SinglePost";
 const Post = ({ data }) => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);

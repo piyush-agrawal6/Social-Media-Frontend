@@ -2,13 +2,36 @@ import React, { useState } from "react";
 import "./ProfileInfo.css";
 import { BiEdit } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
-import { Button, Modal } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Button, Drawer, Modal } from "antd";
+import { updateUser } from "../../Redux/auth/action";
 
 const ProfileInfo = () => {
   const {
     data: { user },
   } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    name: user.name,
+    username: user.username,
+    gender: user.gender,
+    relationship: user.relationship,
+    livesin: user.livesin,
+    workAt: user.workAt,
+    userid: user._id,
+    admin: user.isAdmin,
+  });
+
+  const [on, setOn] = useState(false);
+
+  const showDrawer = () => {
+    setOn(true);
+  };
+
+  const onClose = () => {
+    setOn(false);
+  };
+
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const showModal = () => {
@@ -26,6 +49,29 @@ const ProfileInfo = () => {
     setOpen(false);
   };
 
+  const handleFormChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleFormSubmit = () => {
+    console.log(formData);
+    if (
+      formData.name.trim() !== "" &&
+      formData.workAt.trim() !== "" &&
+      formData.livesin.trim() !== "" &&
+      formData.relationship.trim() !== "" &&
+      formData.username.trim() !== ""
+    ) {
+      if (formData.name.trim().length < 4) {
+        alert("Name and password must be at least of 4 characters");
+      } else {
+        dispatch(updateUser(formData, user._id));
+        handleOk();
+        // alert("user updated");
+      }
+    } else {
+      alert("Please enter all required fields");
+    }
+  };
   return (
     <div className="profileInfo">
       <div className="infoHead">
@@ -34,12 +80,64 @@ const ProfileInfo = () => {
           Edit Info <BiEdit />
         </p>
         <Modal
-          title="Title"
+          title="Edit details"
           open={open}
           onOk={handleOk}
           confirmLoading={confirmLoading}
           onCancel={handleCancel}
-        ></Modal>
+          footer={[
+            <Button key="back" onClick={handleCancel}>
+              Cancel
+            </Button>,
+            <Button key="submit" onClick={handleFormSubmit}>
+              Edit
+            </Button>,
+          ]}
+        >
+          <form>
+            <input
+              name="name"
+              value={formData.name}
+              onChange={handleFormChange}
+              type="text"
+              placeholder="Full name"
+            />
+            <input
+              name="username"
+              value={formData.username}
+              onChange={handleFormChange}
+              type="text"
+              placeholder="@username"
+            />
+            <select name="gender" onChange={handleFormChange}>
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            <input
+              name="relationship"
+              value={formData.relationship}
+              onChange={handleFormChange}
+              type="text"
+              placeholder="Enter relationship status"
+            />
+            <input
+              name="workAt"
+              value={formData.workAt}
+              onChange={handleFormChange}
+              type="text"
+              placeholder="Workplace"
+            />
+            <input
+              name="livesin"
+              value={formData.livesin}
+              onChange={handleFormChange}
+              type="text"
+              placeholder="Location"
+            />
+          </form>
+        </Modal>
       </div>
       <div className="info">
         <span>
@@ -65,12 +163,17 @@ const ProfileInfo = () => {
         </span>
         <span>{user.workAt ? user.workAt : "No data"}</span>
       </div>
-      <div className="info">
+      <div className="info" onClick={showDrawer}>
         <p>
           Account Settings
           <IoMdSettings />
         </p>
       </div>
+      <Drawer title="Basic Drawer" placement="left" onClose={onClose} open={on}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Drawer>
     </div>
   );
 };

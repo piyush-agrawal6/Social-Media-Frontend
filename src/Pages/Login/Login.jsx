@@ -14,7 +14,6 @@ const Login = () => {
 
   const navigate = useNavigate();
   const authState = useSelector((state) => state.auth);
-  console.log("authState: ", authState);
 
   React.useEffect(() => {
     if (authState.userLogin.message === "User doesn't Exist") {

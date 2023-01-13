@@ -17,7 +17,6 @@ const Signup = () => {
   // console.log(auth);
 
   const authState = useSelector((state) => state.auth.userRegister);
-  console.log(authState);
   const navigate = useNavigate();
   React.useEffect(() => {
     if (authState.message === "User already exist") {

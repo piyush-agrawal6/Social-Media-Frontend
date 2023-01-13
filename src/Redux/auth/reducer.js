@@ -84,6 +84,14 @@ export default function authReducer(state = initialState, { type, payload }) {
         ...state,
         allUser: payload,
       };
+    case types.UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          user: payload,
+        },
+      };
     case "AUTH_REGISTER_RESET":
       return {
         ...state,

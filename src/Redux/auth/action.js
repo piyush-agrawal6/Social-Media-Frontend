@@ -53,6 +53,20 @@ export const authLogin = (data) => async (dispatch) => {
   }
 };
 
+//update user
+export const updateUser = (data, id) => async (dispatch) => {
+  try {
+    dispatch({ type: types.UPDATE_USER_REQUEST });
+    const res = await axios.put(
+      `https://busy-jade-sawfish-cape.cyclic.app/user/${id}`,
+      data
+    );
+    dispatch({ type: types.UPDATE_USER_SUCCESS, payload: res.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //get all user
 export const getUser = () => async (dispatch) => {
   try {
