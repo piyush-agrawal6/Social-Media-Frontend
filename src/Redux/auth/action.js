@@ -99,6 +99,43 @@ export const deleteUser = (userid, admin) => async (dispatch) => {
   }
 };
 
+//follow user
+export const followUser = (followId, user) => async (dispatch) => {
+  dispatch({
+    type: types.FOLLOW_USER_REQUEST,
+  });
+  try {
+    const res = await axios.put(
+      `https://busy-jade-sawfish-cape.cyclic.app/user/${followId}/follow`,
+      {
+        currentuserid: user._id,
+      }
+    );
+    console.log(res.data);
+    // dispatch({ type: types.FOLLOW_USER_SUCCESS });
+  } catch (error) {
+    console.log(error);
+  }
+};
+//unfollow user
+export const unfollowUser = (followId, user) => async (dispatch) => {
+  dispatch({
+    type: types.FOLLOW_USER_REQUEST,
+  });
+  try {
+    const res = await axios.put(
+      `https://busy-jade-sawfish-cape.cyclic.app/user/${followId}/unfollow`,
+      {
+        currentuserid: user._id,
+      }
+    );
+    console.log(res.data);
+    // dispatch({ type: types.FOLLOW_USER_SUCCESS });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // logout user
 export const authLogout = () => async (dispatch) => {
   try {

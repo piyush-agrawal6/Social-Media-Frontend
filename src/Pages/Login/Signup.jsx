@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import signupimg from "./signup.png";
 import { registerUser } from "../../Redux/auth/action";
+import { message } from "antd";
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,34 +14,40 @@ const Signup = () => {
     gender: "empty",
   });
   const dispatch = useDispatch();
-  // const auth = useSelector((store) => store.auth);
-  // console.log(auth);
 
   const authState = useSelector((state) => state.auth.userRegister);
   const navigate = useNavigate();
+  const info = (text) => {
+    messageApi.info(text);
+  };
+  const success = (text) => {
+    messageApi.success(text);
+  };
+  const error = (text) => {
+    messageApi.error(text);
+  };
   React.useEffect(() => {
     if (authState.message === "User already exist") {
       dispatch({ type: "AUTH_REGISTER_RESET" });
-      alert("User already exist, please log in.");
+      info("User already exist, please log in.");
       setTimeout(() => {
         navigate("/login");
       }, 2000);
     }
     if (authState.message === "Successful") {
       dispatch({ type: "AUTH_REGISTER_RESET" });
-      alert("User Registered Successfully");
+      success("User Registered Successfully");
       setTimeout(() => {
         navigate("/home");
-      }, 1000);
+      }, 2000);
     }
-  }, [dispatch, navigate, authState.message]);
+  }, [dispatch, navigate, authState.message, info]);
 
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     if (
       formData.name.trim() !== "" &&
       formData.email.trim() !== "" &&
@@ -51,20 +58,22 @@ const Signup = () => {
         formData.name.trim().length < 4 ||
         formData.password.trim().length < 4
       ) {
-        alert("Name and password must be at least of 4 characters");
+        error("Name and password must be at least of 4 characters");
       } else {
         dispatch(registerUser(formData));
       }
     } else {
-      alert("Please enter all required fields");
+      info("Please enter all required fields");
     }
   };
+  const [messageApi, contextHolder] = message.useMessage();
 
   return (
     <div className="signup">
+      {contextHolder}
       <div className="signupContainer">
         <div className="signupImage">
-          <h1>LETS GET DIVERSE.</h1>
+          <h1>LETS DIVERSIFY.</h1>
           <img src={signupimg} alt="" />
         </div>
         <div className="signupDetail">
