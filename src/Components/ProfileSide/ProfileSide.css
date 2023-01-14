@@ -128,7 +128,7 @@
 .followersName > span:nth-child(1) {
   font-weight: bold;
 }
-.followersDetail > button {
+.followBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,10 +141,29 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.followersDetail > button:hover {
+.followBtn:hover {
   background-color: transparent;
   border: 2px solid rgb(11, 82, 152);
   color: rgb(11, 82, 152);
+}
+.unfollowBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(11, 82, 152);
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  padding: 0.35rem 15px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  border: 2px solid rgb(11, 82, 152);
+}
+.unfollowBtn:hover {
+  background-color: rgb(11, 82, 152);
+  color: white;
 }
 .profileLink a {
   color: rgb(11, 82, 152);

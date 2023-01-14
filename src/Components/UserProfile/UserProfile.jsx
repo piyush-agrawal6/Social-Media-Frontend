@@ -8,6 +8,8 @@ const UserProfile = () => {
   const {
     data: { user },
   } = useSelector((store) => store.auth);
+
+  const { myPost } = useSelector((store) => store.post);
   const imageRef = useRef();
   const [loading, setLoading] = useState(false);
   const [img, setImg] = useState(null);
@@ -86,7 +88,7 @@ const UserProfile = () => {
           </div>
           <div className="verticalLine"></div>
           <div className="profileFollowers">
-            <span>{user.following.length}</span>
+            <span>{myPost.length}</span>
             <span>Posts</span>
           </div>
         </div>

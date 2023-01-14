@@ -1,3 +1,4 @@
+import { ActionIcon } from "@mantine/core";
 import * as types from "./types";
 
 const TOKEN = localStorage.getItem("token");
@@ -100,6 +101,30 @@ export default function authReducer(state = initialState, { type, payload }) {
           isAuthenticated: false,
           token: null,
           user: null,
+        },
+      };
+    case types.FOLLOW_USER_SUCCESS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          user: {
+            ...state.data.user,
+            following: [...state.data.user.following, payload],
+          },
+        },
+      };
+    case types.UNFOLLOW_USER_SUCCESS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          user: {
+            ...state.data.user,
+            following: [
+              ...state.data.user.following.filter((id) => id !== payload),
+            ],
+          },
         },
       };
     case "AUTH_REGISTER_RESET":

@@ -112,7 +112,7 @@ export const followUser = (followId, user) => async (dispatch) => {
       }
     );
     console.log(res.data);
-    // dispatch({ type: types.FOLLOW_USER_SUCCESS });
+    dispatch({ type: types.FOLLOW_USER_SUCCESS, payload: followId });
   } catch (error) {
     console.log(error);
   }
@@ -120,7 +120,8 @@ export const followUser = (followId, user) => async (dispatch) => {
 //unfollow user
 export const unfollowUser = (followId, user) => async (dispatch) => {
   dispatch({
-    type: types.FOLLOW_USER_REQUEST,
+    type: types.UNFOLLOW_USER_REQUEST,
+    payload: followId,
   });
   try {
     const res = await axios.put(
@@ -130,7 +131,7 @@ export const unfollowUser = (followId, user) => async (dispatch) => {
       }
     );
     console.log(res.data);
-    // dispatch({ type: types.FOLLOW_USER_SUCCESS });
+    dispatch({ type: types.UNFOLLOW_USER_SUCCESS, payload: followId });
   } catch (error) {
     console.log(error);
   }
