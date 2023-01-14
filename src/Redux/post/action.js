@@ -47,11 +47,10 @@ export const userPost = (id) => async (dispatch) => {
 // like dislike post
 export const likePost = (postId, id) => async (dispatch) => {
   try {
-    const res = await axios.put(
+    await axios.put(
       `https://busy-jade-sawfish-cape.cyclic.app/post/${postId}/like`,
       { userid: id }
     );
-    console.log("res: ", res.data);
   } catch (error) {
     console.log(error);
   }
@@ -64,7 +63,6 @@ export const postComment = (data, postId) => async (dispatch) => {
       `https://busy-jade-sawfish-cape.cyclic.app/post/${postId}/comment`,
       data
     );
-    console.log(res.data.comment);
     dispatch({
       type: types.COMMENT_SUCCESS,
       payload: { id: postId, data: res.data.comment },

@@ -1,6 +1,5 @@
 import * as types from "./types";
 import axios from "axios";
-import { message } from "antd";
 
 // Register User
 export const registerUser = (userData) => async (dispatch) => {
@@ -57,14 +56,12 @@ export const authLogin = (data) => async (dispatch) => {
 
 //update user
 export const updateUser = (data, id) => async (dispatch) => {
-  console.log(data);
   try {
     dispatch({ type: types.UPDATE_USER_REQUEST });
     const res = await axios.put(
       `https://busy-jade-sawfish-cape.cyclic.app/user/${id}`,
       data
     );
-    console.log(res.data);
     dispatch({ type: types.UPDATE_USER_SUCCESS, payload: res.data });
   } catch (error) {
     console.log(error);
@@ -104,13 +101,12 @@ export const followUser = (followId, user) => async (dispatch) => {
     type: types.FOLLOW_USER_REQUEST,
   });
   try {
-    const res = await axios.put(
+    await axios.put(
       `https://busy-jade-sawfish-cape.cyclic.app/user/${followId}/follow`,
       {
         currentuserid: user._id,
       }
     );
-    console.log(res.data);
     dispatch({ type: types.FOLLOW_USER_SUCCESS, payload: followId });
   } catch (error) {
     console.log(error);
@@ -123,13 +119,12 @@ export const unfollowUser = (followId, user) => async (dispatch) => {
     payload: followId,
   });
   try {
-    const res = await axios.put(
+    await axios.put(
       `https://busy-jade-sawfish-cape.cyclic.app/user/${followId}/unfollow`,
       {
         currentuserid: user._id,
       }
     );
-    console.log(res.data);
     dispatch({ type: types.UNFOLLOW_USER_SUCCESS, payload: followId });
   } catch (error) {
     console.log(error);

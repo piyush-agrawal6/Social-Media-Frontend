@@ -4,7 +4,7 @@ import { BiEdit } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Drawer, Modal } from "antd";
-import { deleteUser, updateUser } from "../../Redux/auth/action";
+import {  updateUser } from "../../Redux/auth/action";
 import DeleteUser from "../../Components/DeleteUser/DeleteUser";
 import ChangePassword from "../../Components/ChangePassword/ChangePassword";
 import { message } from "antd";
@@ -70,7 +70,7 @@ const ProfileInfo = () => {
       formData.username.trim() !== ""
     ) {
       if (formData.name.trim().length < 4) {
-        error("Name and password must be at least of 4 characters");
+        error("Name must be at least of 4 characters");
       } else {
         dispatch(updateUser(formData, user._id));
         success("user updated");

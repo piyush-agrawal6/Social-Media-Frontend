@@ -1,7 +1,7 @@
 import { message } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost, postComment } from "../../Redux/post/action";
+import { postComment } from "../../Redux/post/action";
 import "./Comment.css";
 const Comment = ({ data, e }) => {
   const [text, setText] = useState("");

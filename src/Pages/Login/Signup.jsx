@@ -20,9 +20,6 @@ const Signup = () => {
 
   const [messageApi, contextHolder] = message.useMessage();
 
-  const success = (text) => {
-    messageApi.success(text);
-  };
   const info = (text) => {
     messageApi.info(text);
   };
@@ -32,20 +29,19 @@ const Signup = () => {
   };
   React.useEffect(() => {
     if (authState.message === "User already exist") {
-      dispatch({ type: "AUTH_REGISTER_RESET" });
       info("User already exist, please log in.");
+      dispatch({ type: "AUTH_REGISTER_RESET" });
       setTimeout(() => {
         navigate("/login");
       }, 2000);
     }
     if (authState.message === "Successful") {
       dispatch({ type: "AUTH_REGISTER_RESET" });
-      success("User Registered Successfully");
       setTimeout(() => {
         navigate("/home");
       }, 2000);
     }
-  }, [dispatch, navigate, authState.message, info]);
+  }, [dispatch, navigate, authState.message,info]);
 
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -70,7 +66,7 @@ const Signup = () => {
       info("Please enter all required fields");
     }
   };
-  
+
   return (
     <div className="signup">
       {contextHolder}
