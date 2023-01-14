@@ -6,8 +6,14 @@ import { SlCalender } from "react-icons/sl";
 import { RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost } from "../../Redux/post/action";
+import { message } from "antd";
 
 const StartPost = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const success = (text) => {
+    messageApi.success(text);
+  };
   const [desc, setDesc] = useState("");
   const [img, setImg] = useState(null);
   const [image, setImage] = useState(null);
@@ -47,12 +53,14 @@ const StartPost = () => {
       image,
     };
     dispatch(createPost(postData));
+    success("Post Shared Successfully!");
     setDesc("");
     setImage(null);
     setImg("");
   };
   return (
     <div className="postShare">
+      {contextHolder}
       <img src={user.profilePicture} alt="profile" />
       <div className="postInput">
         <input

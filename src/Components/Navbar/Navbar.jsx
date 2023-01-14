@@ -9,7 +9,13 @@ import { FiLogIn, FiLogOut } from "react-icons/fi";
 import logo from "./logo.svg";
 import sm from "./1.svg";
 import { useDispatch, useSelector } from "react-redux";
+import { message } from "antd";
 const Navbar = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const success = (text) => {
+    messageApi.success(text);
+  };
   const {
     data: { isAuthenticated },
   } = useSelector((store) => store.auth);
@@ -17,6 +23,7 @@ const Navbar = () => {
 
   return (
     <div className="container">
+      {contextHolder}
       <div className="row v-center">
         <div className="nav-item item-left">
           <div className="logo">
@@ -62,6 +69,7 @@ const Navbar = () => {
               <Link
                 onClick={() => {
                   dispatch({ type: "AUTH_LOGOUT" });
+                  success("logged out successfully");
                 }}
               >
                 <FiLogOut className="sideIcons" />

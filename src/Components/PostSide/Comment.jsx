@@ -1,14 +1,19 @@
+import { message } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPost, postComment } from "../../Redux/post/action";
 import "./Comment.css";
 const Comment = ({ data, e }) => {
   const [text, setText] = useState("");
-  const [com, setCom] = useState(data);
   const {
     data: { user },
   } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const success = (text) => {
+    messageApi.success(text);
+  };
   const submitPost = () => {
     let data = {
       comment: text,
@@ -17,16 +22,15 @@ const Comment = ({ data, e }) => {
       name: user.name,
     };
     dispatch(postComment(data, e));
+    success("Comment posted successfully");
   };
-  const {post} = useSelector((store) => store.post);
-  useEffect(() => {
-    console.log("first");
-  }, [dispatch, post]);
+
   return (
     <div>
+      {contextHolder}
       <div className="writeComment">
         <img
-          src="https://img.freepik.com/free-icon/user_318-725053.jpg"
+          src={user.profilePicture}
           alt="comment"
         />
         <input
@@ -37,7 +41,7 @@ const Comment = ({ data, e }) => {
         />
         <button onClick={submitPost}>Post</button>
       </div>
-      {com?.map((elem, i) => {
+      {data?.map((elem, i) => {
         return (
           <div className="comments" key={i}>
             <img src={elem.image} alt="comment" />

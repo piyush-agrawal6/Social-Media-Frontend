@@ -7,7 +7,7 @@ import { Button, Drawer, Modal } from "antd";
 import { deleteUser, updateUser } from "../../Redux/auth/action";
 import DeleteUser from "../../Components/DeleteUser/DeleteUser";
 import ChangePassword from "../../Components/ChangePassword/ChangePassword";
-
+import { message } from "antd";
 const ProfileInfo = () => {
   const {
     data: { user },
@@ -46,7 +46,14 @@ const ProfileInfo = () => {
       setConfirmLoading(false);
     }, 2000);
   };
+  const [messageApi, contextHolder] = message.useMessage();
 
+  const success = (text) => {
+    messageApi.success(text);
+  };
+  const error = (text) => {
+    messageApi.error(text);
+  };
   const handleCancel = () => {
     setOpen(false);
   };
@@ -55,7 +62,6 @@ const ProfileInfo = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleFormSubmit = () => {
-    console.log(formData);
     if (
       formData.name.trim() !== "" &&
       formData.workAt.trim() !== "" &&
@@ -64,19 +70,20 @@ const ProfileInfo = () => {
       formData.username.trim() !== ""
     ) {
       if (formData.name.trim().length < 4) {
-        alert("Name and password must be at least of 4 characters");
+        error("Name and password must be at least of 4 characters");
       } else {
         dispatch(updateUser(formData, user._id));
+        success("user updated");
         handleOk();
-        alert("user updated");
       }
     } else {
-      alert("Please enter all required fields");
+      error("Please enter all required fields");
     }
   };
 
   return (
     <div className="profileInfo">
+      {contextHolder}
       <div className="infoHead">
         <h3>Your Info</h3>
         <p onClick={showModal}>

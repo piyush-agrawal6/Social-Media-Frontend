@@ -6,6 +6,7 @@
 .writeComment img {
   width: 2.5rem;
   height: 2.5rem;
+  border-radius: 50%;
 }
 .writeComment input {
   width: 100%;
@@ -46,6 +47,7 @@
 .comments img {
   width: 2.5rem;
   height: 2.5rem;
+  border-radius: 50%;
 }
 .commentInfo {
   display: flex;

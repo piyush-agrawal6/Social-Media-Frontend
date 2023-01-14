@@ -5,6 +5,7 @@ import { deleteUser } from "../../Redux/auth/action";
 import "./DeleteAccount.css";
 const DeleteUser = () => {
   const [open, setOpen] = useState(false);
+  const [text, setText] = useState("");
 
   const showDrawer = () => {
     setOpen(true);
@@ -13,13 +14,17 @@ const DeleteUser = () => {
   const onClose = () => {
     setOpen(false);
   };
+  
   const {
     data: { user },
   } = useSelector((store) => store.auth);
+
   const dispatch = useDispatch();
+
   const handleUserDelete = () => {
-    //     dispatch(deleteUser(user._id, user.isAdmin));
+    dispatch(deleteUser(text , user._id));
   };
+
   return (
     <>
       <p onClick={showDrawer}>Delete Account </p>
@@ -31,9 +36,16 @@ const DeleteUser = () => {
         className="deleteDrawer"
       >
         <p>Enter Your Password</p>
-        <input type="text" placeholder="Password" />
+        <input
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          type="text"
+          placeholder="Password"
+        />
         <br />
-        <button className="deleteButton">Delete</button>
+        <button onClick={handleUserDelete} className="deleteButton">
+          Delete
+        </button>
       </Drawer>
     </>
   );

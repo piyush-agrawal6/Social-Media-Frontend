@@ -17,12 +17,16 @@ const Signup = () => {
 
   const authState = useSelector((state) => state.auth.userRegister);
   const navigate = useNavigate();
-  const info = (text) => {
-    messageApi.info(text);
-  };
+
+  const [messageApi, contextHolder] = message.useMessage();
+
   const success = (text) => {
     messageApi.success(text);
   };
+  const info = (text) => {
+    messageApi.info(text);
+  };
+
   const error = (text) => {
     messageApi.error(text);
   };
@@ -66,8 +70,7 @@ const Signup = () => {
       info("Please enter all required fields");
     }
   };
-  const [messageApi, contextHolder] = message.useMessage();
-
+  
   return (
     <div className="signup">
       {contextHolder}

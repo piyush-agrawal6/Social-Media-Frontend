@@ -47,6 +47,7 @@ const SinglePost = ({ e }) => {
           </div>
         )}
         <div>
+          {e.comment.length}
           <BiCommentDetail onClick={() => setCommentOpen(!commentOpen)} />
         </div>
       </div>

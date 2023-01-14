@@ -1,5 +1,6 @@
 import * as types from "./types";
 import axios from "axios";
+import { message } from "antd";
 
 // Register User
 export const registerUser = (userData) => async (dispatch) => {
@@ -9,6 +10,7 @@ export const registerUser = (userData) => async (dispatch) => {
       `https://busy-jade-sawfish-cape.cyclic.app/auth/register`,
       userData
     );
+    
     dispatch({
       type: types.REGISTER_USER_SUCCESS,
       payload: {
@@ -82,18 +84,15 @@ export const getUser = () => async (dispatch) => {
 };
 
 //delete account
-export const deleteUser = (userid, admin) => async (dispatch) => {
-  console.log(userid);
+export const deleteUser = (password, id) => async (dispatch) => {
+  console.log(password, id);
   try {
     const res = await axios.delete(
-      `https://busy-jade-sawfish-cape.cyclic.app/user/${userid}`,
-      {
-        userid,
-        userAdminstatus: admin,
-      }
+      `https://busy-jade-sawfish-cape.cyclic.app/user/${id}`,
+      { id, password }
     );
-    console.log(res);
-    dispatch({ type: types.DELETE_USER_SUCCESS });
+    console.log(res.data);
+    // dispatch({ type: types.DELETE_USER_SUCCESS });
   } catch (error) {
     console.log(error);
   }

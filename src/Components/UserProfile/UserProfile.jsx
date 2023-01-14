@@ -4,11 +4,19 @@ import { AiOutlineEdit } from "react-icons/ai";
 import "./UserProfile.css";
 import { RxCross2 } from "react-icons/rx";
 import { updateUser } from "../../Redux/auth/action";
+import { message } from "antd";
 const UserProfile = () => {
   const {
     data: { user },
   } = useSelector((store) => store.auth);
+  const [messageApi, contextHolder] = message.useMessage();
 
+  const success = (text) => {
+    messageApi.success(text);
+  };
+  const error = (text) => {
+    messageApi.error(text);
+  };
   const { myPost } = useSelector((store) => store.post);
   const imageRef = useRef();
   const [loading, setLoading] = useState(false);
@@ -36,13 +44,14 @@ const UserProfile = () => {
   const updateCover = (e) => {
     e.preventDefault();
     if (image == null) {
-      return alert("Please select a file");
+      return error("Please select a file");
     }
     const coverData = {
       coverPicture: image,
       userid: user._id,
     };
     dispatch(updateUser(coverData, user._id));
+    success("Profile updated`");
     setImg(null);
   };
   const updateProfile = (e) => {
@@ -55,10 +64,12 @@ const UserProfile = () => {
       userid: user._id,
     };
     dispatch(updateUser(profileData, user._id));
+    success("Profile updated`");
     setImg(null);
   };
   return (
     <div className="profileCard">
+      {contextHolder}
       <div className="userProfile">
         <img src={user.coverPicture} alt="coverPic" />
         <img
