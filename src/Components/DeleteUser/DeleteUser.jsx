@@ -1,11 +1,12 @@
 import { Drawer } from "antd";
+import Password from "antd/es/input/Password";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser } from "../../Redux/auth/action";
 import "./DeleteAccount.css";
 const DeleteUser = () => {
   const [open, setOpen] = useState(false);
-  const [text, setText] = useState("");
+  const [password, setText] = useState("");
 
   const showDrawer = () => {
     setOpen(true);
@@ -22,7 +23,7 @@ const DeleteUser = () => {
   const dispatch = useDispatch();
 
   const handleUserDelete = () => {
-    dispatch(deleteUser(text , user._id));
+    dispatch(deleteUser(password , user._id));
   };
 
   return (
@@ -37,7 +38,7 @@ const DeleteUser = () => {
       >
         <p>Enter Your Password</p>
         <input
-          value={text}
+          value={password}
           onChange={(e) => setText(e.target.value)}
           type="text"
           placeholder="Password"

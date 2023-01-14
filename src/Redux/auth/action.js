@@ -9,7 +9,7 @@ export const registerUser = (userData) => async (dispatch) => {
       `https://busy-jade-sawfish-cape.cyclic.app/auth/register`,
       userData
     );
-    
+
     dispatch({
       type: types.REGISTER_USER_SUCCESS,
       payload: {
@@ -84,12 +84,16 @@ export const getUser = () => async (dispatch) => {
 export const deleteUser = (password, id) => async (dispatch) => {
   console.log(password, id);
   try {
-    const res = await axios.delete(
+    const res = await fetch(
       `https://busy-jade-sawfish-cape.cyclic.app/user/${id}`,
-      { id, password }
+      {
+        method: "DELETE",
+        body: JSON.stringify({ password, id }),
+        headers: { "Content-Type": "application/json" },
+      }
     );
-    console.log(res.data);
-    // dispatch({ type: types.DELETE_USER_SUCCESS });
+    let data = await res.json();
+    console.log(data);
   } catch (error) {
     console.log(error);
   }
@@ -112,6 +116,7 @@ export const followUser = (followId, user) => async (dispatch) => {
     console.log(error);
   }
 };
+
 //unfollow user
 export const unfollowUser = (followId, user) => async (dispatch) => {
   dispatch({
