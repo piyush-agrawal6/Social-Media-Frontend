@@ -1,0 +1,27 @@
+.deleteDrawer p {
+  font-weight: bolder;
+  font-size: 16px;
+  color: rgb(11, 82, 152);
+}
+.deleteDrawer input {
+  width: 70%;
+  padding: 10px;
+  margin: 1rem auto;
+  font-size: 15px;
+  letter-spacing: 1px;
+  outline: none;
+  border: 1px solid rgb(187, 187, 187);
+  color: gray;
+  box-sizing: border-box;
+}
+.deleteButton {
+  width: 70%;
+  padding: 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  background-color: rgb(11, 82, 152);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}

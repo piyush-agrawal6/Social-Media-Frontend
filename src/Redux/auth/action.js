@@ -81,7 +81,7 @@ export const getUser = () => async (dispatch) => {
   }
 };
 
-//get all user
+//delete account
 export const deleteUser = (userid, admin) => async (dispatch) => {
   console.log(userid);
   try {

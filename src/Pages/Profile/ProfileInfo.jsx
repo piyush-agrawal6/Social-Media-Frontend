@@ -5,6 +5,8 @@ import { IoMdSettings } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Drawer, Modal } from "antd";
 import { deleteUser, updateUser } from "../../Redux/auth/action";
+import DeleteUser from "../../Components/DeleteUser/DeleteUser";
+import ChangePassword from "../../Components/ChangePassword/ChangePassword";
 
 const ProfileInfo = () => {
   const {
@@ -66,15 +68,13 @@ const ProfileInfo = () => {
       } else {
         dispatch(updateUser(formData, user._id));
         handleOk();
-        // alert("user updated");
+        alert("user updated");
       }
     } else {
       alert("Please enter all required fields");
     }
   };
-  const handleUserDelete = () => {
-    dispatch(deleteUser(user._id, user.isAdmin));
-  };
+
   return (
     <div className="profileInfo">
       <div className="infoHead">
@@ -179,8 +179,8 @@ const ProfileInfo = () => {
         open={on}
         className="accountDrawer"
       >
-        <p onClick={handleUserDelete}>Delete Account</p>
-        <p>Change Password</p>
+        <DeleteUser />
+        <ChangePassword />
         <p
           onClick={() => {
             dispatch({ type: "AUTH_LOGOUT" });

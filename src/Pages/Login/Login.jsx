@@ -70,9 +70,6 @@ const Login = () => {
                 New User ? <Link to="/signup">Signup .</Link>
               </p>
               <button type="submit">CONTINUE</button>
-              <p>
-                <Link>Forgot Password ?</Link>
-              </p>
             </form>
           </div>
         </div>

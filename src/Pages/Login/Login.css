@@ -8,7 +8,7 @@
 .loginContainer {
   width: 900px;
   margin: auto;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   display: flex;
   background-color: rgb(255, 255, 255);
 }
@@ -21,7 +21,7 @@
   color: rgb(11, 82, 152);
 }
 .loginImage img {
-  width: 80%;
+  width: 70%;
 }
 .loginDetail {
   padding: 1rem;
@@ -38,7 +38,7 @@ span {
   color: rgb(57, 57, 57);
 }
 .loginDetail > div:nth-child(2) input {
-  width: 95%;
+  width: 100%;
   padding: 10px;
   margin: 1rem 0;
   font-size: 15px;
@@ -46,9 +46,11 @@ span {
   outline: none;
   border: 1px solid rgb(187, 187, 187);
   color: gray;
+  box-sizing: border-box;
 }
 .loginDetail > div:nth-child(2) button {
   width: 100%;
+  box-sizing: border-box;
   padding: 10px;
   margin: 1rem 0;
   font-size: 15px;
