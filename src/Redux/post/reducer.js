@@ -13,6 +13,14 @@ export default function postReducer(state = initialState, { type, payload }) {
         ...state,
         postLoading: true,
       };
+    case types:
+      return {
+        ...state,
+        post: [
+          ...state.post.filter((elem) => elem._id !== payload.id),
+          payload.data,
+        ],
+      };
     case types.CREATE_POST_SUCCESS:
       return {
         ...state,

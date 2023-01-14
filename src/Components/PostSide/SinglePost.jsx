@@ -50,7 +50,7 @@ const SinglePost = ({ e }) => {
           <BiCommentDetail onClick={() => setCommentOpen(!commentOpen)} />
         </div>
       </div>
-      {commentOpen && <Comment />}
+      {commentOpen && <Comment data={e.comment} e={e._id} />}
     </div>
   );
 };
