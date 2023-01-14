@@ -6,6 +6,7 @@ import { likePost } from "../../Redux/post/action";
 import Comment from "./Comment";
 
 const SinglePost = ({ e }) => {
+  const [commentOpen, setCommentOpen] = useState(false);
   const {
     data: { user },
   } = useSelector((store) => store.auth);
@@ -46,12 +47,10 @@ const SinglePost = ({ e }) => {
           </div>
         )}
         <div>
-          <BiCommentDetail />
+          <BiCommentDetail onClick={() => setCommentOpen(!commentOpen)} />
         </div>
       </div>
-      <div>
-        <Comment />
-      </div>
+      {commentOpen && <Comment />}
     </div>
   );
 };

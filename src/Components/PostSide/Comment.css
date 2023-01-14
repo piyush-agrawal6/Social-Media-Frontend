@@ -1,0 +1,61 @@
+.writeComment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.writeComment img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.writeComment input {
+  width: 100%;
+  padding: 9px;
+  margin: 0.7rem auto;
+  font-size: 15px;
+  letter-spacing: 1px;
+  outline: none;
+  border: 1px solid rgb(187, 187, 187);
+  color: rgb(41, 41, 41);
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.writeComment button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(11, 82, 152);
+  padding: 9px 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.writeComment button:hover {
+  background-color: transparent;
+  border: 2px solid rgb(11, 82, 152);
+  color: rgb(11, 82, 152);
+  padding: 3px 14px;
+}
+.comments {
+  display: flex;
+  gap: 10px;
+  padding: 9px 0;
+}
+.comments img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.commentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.commentInfo span {
+  font-weight: 700;
+}
+.commentInfo p {
+  font-weight: 400;
+  color: rgb(70, 70, 70);
+}
