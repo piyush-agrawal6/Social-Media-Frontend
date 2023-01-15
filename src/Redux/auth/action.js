@@ -36,6 +36,7 @@ export const authLogin = (data) => async (dispatch) => {
       "https://busy-jade-sawfish-cape.cyclic.app/auth/login",
       data
     );
+    console.log(res.data)
     dispatch({
       type: types.LOGIN_USER_SUCCESS,
       payload: {
@@ -98,6 +99,22 @@ export const deleteUser = (password, id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+//change password
+export const changePassword =
+  (oldpassword, id, newpassword) => async (dispatch) => {
+    console.log(oldpassword, id, newpassword);
+    try {
+      let res = await axios.put(
+        `https://busy-jade-sawfish-cape.cyclic.app/user`,
+        { id, oldpassword, newpassword }
+      );
+      console.log(res.data);
+      // dispatch({ type: types.FOLLOW_USER_SUCCESS, payload: followId });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 //follow user
 export const followUser = (followId, user) => async (dispatch) => {

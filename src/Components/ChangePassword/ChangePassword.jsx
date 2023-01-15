@@ -1,11 +1,15 @@
 import { Drawer } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { changePassword } from "../../Redux/auth/action";
 import "./ChangePassword.css";
 const ChangePassword = () => {
   const [open, setOpen] = useState(false);
-
+  const [formData, setFormData] = useState({
+    newpassword: "",
+    oldpassword: "",
+    confirmpassword: "",
+  });
   const showDrawer = () => {
     setOpen(true);
   };
@@ -17,8 +21,20 @@ const ChangePassword = () => {
     data: { user },
   } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
-  const handleUserDelete = () => {
-    //     dispatch(deleteUser(user._id, user.isAdmin));
+
+  const handleFormChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePassChange = () => {
+    console.log(formData);
+    if (formData.newpassword === formData.confirmpassword) {
+      dispatch(
+        changePassword(formData.oldpassword, user._id, formData.newpassword)
+      );
+    } else {
+      alert("Password does not match");
+    }
   };
   return (
     <>
@@ -31,13 +47,33 @@ const ChangePassword = () => {
         className="changeDrawer"
       >
         <p>Enter Current Password</p>
-        <input type="text" placeholder="Current Password" />
+        <input
+          value={formData.oldpassword}
+          name="oldpassword"
+          onChange={handleFormChange}
+          type="text"
+          placeholder="Current Password"
+        />
         <p>Enter New Password</p>
-        <input type="text" placeholder="New Password" />
+        <input
+          value={formData.newpassword}
+          name="newpassword"
+          onChange={handleFormChange}
+          type="text"
+          placeholder="New Password"
+        />
         <p>Confirm New Password</p>
-        <input type="text" placeholder="Confirm Password" />
+        <input
+          value={formData.confirmpassword}
+          name="confirmpassword"
+          onChange={handleFormChange}
+          type="text"
+          placeholder="Confirm Password"
+        />
         <br />
-        <button className="changeButton">Change</button>
+        <button onClick={handlePassChange} className="changeButton">
+          Change
+        </button>
       </Drawer>
     </>
   );
