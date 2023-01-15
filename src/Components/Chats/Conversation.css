@@ -1,0 +1,36 @@
+.conversation {
+  display: flex;
+  gap: 14px;
+  padding: 9px 12px;
+  transition: all 0.2s ease;
+}
+.conversation:hover {
+  background-color: rgb(235, 235, 235);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.convImg {
+  position: relative;
+}
+.convImg img {
+  width: 3rem;
+  height: 3rem;
+}
+.convImg div {
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: rgb(133, 216, 10);
+  border-radius: 50%;
+  top: 0;
+  right: 2px;
+}
+.convStatus {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2px;
+  gap: 2px;
+}
+.convStatus div {
+  font-weight: 500;
+}

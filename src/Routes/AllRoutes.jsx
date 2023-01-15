@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "../Components/Navbar/Navbar";
+import Chats from "../Pages/Chats/Chats";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Login/Signup";
@@ -35,6 +36,10 @@ const AllRoutes = () => {
         <Route
           path="/profile"
           element={isAuthenticated ? <Profile /> : <Navigate to="../signup" />}
+        />
+        <Route
+          path="/chats"
+          element={isAuthenticated ? <Chats /> : <Navigate to="../signup" />}
         />
         <Route
           path="*"

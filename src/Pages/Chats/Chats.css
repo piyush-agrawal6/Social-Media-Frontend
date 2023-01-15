@@ -1,0 +1,49 @@
+.chatContainer {
+  position: relative;
+  display: grid;
+  width: 80%;
+  margin: auto;
+  grid-template-columns: 20rem auto;
+  padding-top: 4.8rem;
+}
+.chatLeft {
+  height: calc(100vh - 10rem);
+  background-color: var(--cardColor);
+  margin: 1rem 0.5rem;
+  padding: 1.5rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  overflow: auto;
+}
+.chatSearch {
+  padding: 5px 0;
+}
+.chatSearch input {
+  padding: 8px 10px;
+  outline: none;
+  margin-right: 6px;
+  border: 2px solid rgb(201, 201, 201);
+  border-radius: 4px;
+  font-weight: 600;
+}
+.chatSearch button {
+  padding: 7px 10px;
+  outline: none;
+  border: 1px solid rgb(11, 82, 152);
+  border-radius: 4px;
+  background-color: rgb(11, 82, 152);
+  color: white;
+  font-weight: 600;
+}
+.convBox h3 {
+  font-weight: 700;
+  margin: 18px 0;
+  color: rgb(11, 82, 152);
+}
+.chatRight {
+  height: calc(100vh -6rem);
+  background-color: var(--cardColor);
+  margin: 1rem 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
