@@ -4,7 +4,7 @@ import Conversation from "../../Components/Chats/Conversation";
 import "./Chats.css";
 
 const Chats = () => {
-  const [data, setData] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [data, setData] = useState([0, 0, 0, 0, 0, 0]);
   return (
     <div className="chatContainer">
       <div className="chatLeft">
