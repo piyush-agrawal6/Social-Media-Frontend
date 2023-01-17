@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postComment } from "../../Redux/post/action";
 import "./Comment.css";
 const Comment = ({ data, e }) => {
+  const [comments, setComments] = useState(data);
   const [text, setText] = useState("");
   const {
     data: { user },
@@ -22,6 +23,7 @@ const Comment = ({ data, e }) => {
       name: user.name,
     };
     dispatch(postComment(data, e));
+    setComments([...comments, data]);
     success("Comment posted successfully");
   };
 
@@ -29,10 +31,7 @@ const Comment = ({ data, e }) => {
     <div>
       {contextHolder}
       <div className="writeComment">
-        <img
-          src={user.profilePicture}
-          alt="comment"
-        />
+        <img src={user.profilePicture} alt="comment" />
         <input
           value={text}
           onChange={({ target }) => setText(target.value)}
@@ -41,7 +40,7 @@ const Comment = ({ data, e }) => {
         />
         <button onClick={submitPost}>Post</button>
       </div>
-      {data?.map((elem, i) => {
+      {comments?.map((elem, i) => {
         return (
           <div className="comments" key={i}>
             <img src={elem.image} alt="comment" />

@@ -59,14 +59,10 @@ export const likePost = (postId, id) => async (dispatch) => {
 // add comment
 export const postComment = (data, postId) => async (dispatch) => {
   try {
-    const res = await axios.put(
+    await axios.put(
       `https://busy-jade-sawfish-cape.cyclic.app/post/${postId}/comment`,
       data
     );
-    dispatch({
-      type: types.COMMENT_SUCCESS,
-      payload: { id: postId, data: res.data.comment },
-    });
   } catch (error) {
     console.log(error);
   }

@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getSingleUser } from "../../Redux/auth/action";
 import "./Conversation.css";
-const Conversation = () => {
+const Conversation = ({ data, userId }) => {
+  const [userData, setUserData] = useState(null);
+  const dispatch = useDispatch();
+  console.log(data)
+  const chatId = data?.member.find((id) => id !== userId);
+
+  useEffect(() => {
+    dispatch(getSingleUser(chatId)).then((res) => {
+      setUserData(res.data);
+    });
+  }, [chatId, dispatch]);
+
   return (
     <div className="conversation">
       <div className="convImg">
-        <img
-          src="https://img.freepik.com/free-icon/user_318-725053.jpg"
-          alt=""
-        />
+        <img src={userData?.profilePicture} alt="" />
         <div></div>
       </div>
       <div className="convStatus">
-        <div>User Name</div>
+        <div>{userData?.name}</div>
         <span>Online</span>
       </div>
     </div>

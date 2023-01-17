@@ -1,4 +1,3 @@
-import { ActionIcon } from "@mantine/core";
 import * as types from "./types";
 
 const TOKEN = localStorage.getItem("token");
@@ -6,6 +5,7 @@ const initialState = {
   userLogin: { loading: false, error: false, message: "" },
   userRegister: { loading: false, error: false, message: "" },
   userLogout: { message: "" },
+  passwordChange: { message: "" },
   allUser: [],
   data: {
     isAuthenticated: !!TOKEN,
@@ -102,6 +102,16 @@ export default function authReducer(state = initialState, { type, payload }) {
           token: null,
           user: null,
         },
+      };
+    case "RESET_CHANGE_PASSWORD_SUCCESS":
+      return {
+        ...state,
+        passwordChange: "",
+      };
+    case types.CHANGE_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        passwordChange: payload,
       };
     case types.FOLLOW_USER_SUCCESS:
       return {

@@ -36,7 +36,7 @@ export const authLogin = (data) => async (dispatch) => {
       "https://busy-jade-sawfish-cape.cyclic.app/auth/login",
       data
     );
-    console.log(res.data)
+    console.log(res.data);
     dispatch({
       type: types.LOGIN_USER_SUCCESS,
       payload: {
@@ -81,9 +81,20 @@ export const getUser = () => async (dispatch) => {
   }
 };
 
+//get single user
+export const getSingleUser = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(
+      `https://busy-jade-sawfish-cape.cyclic.app/user/${id}`
+    );
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //delete account
 export const deleteUser = (password, id) => async (dispatch) => {
-  console.log(password, id);
   try {
     const res = await fetch(
       `https://busy-jade-sawfish-cape.cyclic.app/user/${id}`,
@@ -95,6 +106,10 @@ export const deleteUser = (password, id) => async (dispatch) => {
     );
     let data = await res.json();
     console.log(data);
+    dispatch({
+      type: types.DELETE_USER_SUCCESS,
+    });
+    console.log(data);
   } catch (error) {
     console.log(error);
   }
@@ -103,14 +118,16 @@ export const deleteUser = (password, id) => async (dispatch) => {
 //change password
 export const changePassword =
   (oldpassword, id, newpassword) => async (dispatch) => {
-    console.log(oldpassword, id, newpassword);
     try {
       let res = await axios.put(
         `https://busy-jade-sawfish-cape.cyclic.app/user`,
         { id, oldpassword, newpassword }
       );
       console.log(res.data);
-      // dispatch({ type: types.FOLLOW_USER_SUCCESS, payload: followId });
+      dispatch({
+        type: types.CHANGE_PASSWORD_SUCCESS,
+        payload: res.data.message,
+      });
     } catch (error) {
       console.log(error);
     }
