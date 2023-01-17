@@ -1,9 +1,13 @@
+.chatBox {
+  display: grid;
+  grid-template-rows: 4rem auto 4rem;
+}
 .chatHead {
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   border-bottom: 1px solid lightgray;
 }
 .chatBody {
-  height: 24.5rem;
+  height: calc(100vh - 18rem);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -65,4 +69,21 @@
   border: 2px solid rgb(11, 82, 152);
   color: rgb(11, 82, 152);
   padding: 3px 14px;
+}
+
+@media (max-width: 500px) {
+  .chatBody {
+    height: calc(100vh - 16.5rem);
+  }
+}
+
+@media (max-width: 421px) {
+  .chatBody {
+    height: calc(100vh - 16rem);
+  }
+}
+@media (max-width: 321px) {
+  .chatBody {
+    height: calc(100vh - 15.5rem);
+  }
 }

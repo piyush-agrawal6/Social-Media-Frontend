@@ -8,10 +8,10 @@ const Chats = () => {
   return (
     <div className="chatContainer">
       <div className="chatLeft">
-        <div className="chatSearch">
+        {/* <div className="chatSearch">
           <input type="text" placeholder="search user" />
           <button>Find</button>
-        </div>
+        </div> */}
         <div className="convBox">
           <h3>Conversations</h3>
           {data.map((e) => {

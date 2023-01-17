@@ -37,7 +37,7 @@
 }
 .convBox h3 {
   font-weight: 700;
-  margin: 18px 0;
+  margin: 10px 0;
   color: rgb(11, 82, 152);
 }
 .chatRight {
@@ -48,3 +48,39 @@
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
+@media (max-width: 1200px) {
+  .chatContainer {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .chatContainer {
+    width: 100%;
+  }
+}
+@media (max-width: 800px) {
+  .chatContainer {
+    grid-template-columns: auto;
+    padding-top: 4.7rem;
+  }
+  .chatLeft {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .chatContainer {
+    margin: 0;
+    padding-top: 4rem;
+  }
+}
+@media (max-width: 421px) {
+  .chatContainer {
+    padding-top: 3.4rem;
+  }
+}
+@media (max-width: 321px) {
+  .chatContainer {
+    padding-top: 2.8rem;
+  }
+}
