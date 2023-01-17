@@ -52,7 +52,6 @@ let ChangePassword = () => {
   };
 
   const handlePassChange = () => {
-    console.log(formData);
     if (formData.newpassword === formData.confirmpassword) {
       dispatch(
         changePassword(formData.oldpassword, user._id, formData.newpassword)

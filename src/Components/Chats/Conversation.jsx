@@ -5,7 +5,6 @@ import "./Conversation.css";
 const Conversation = ({ data, userId }) => {
   const [userData, setUserData] = useState(null);
   const dispatch = useDispatch();
-  console.log(data)
   const chatId = data?.member.find((id) => id !== userId);
 
   useEffect(() => {

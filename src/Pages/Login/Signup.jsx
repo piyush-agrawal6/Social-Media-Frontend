@@ -16,6 +16,7 @@ const Signup = () => {
   const dispatch = useDispatch();
 
   const authState = useSelector((state) => state.auth.userRegister);
+  const { userRegister } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   const [messageApi, contextHolder] = message.useMessage();
@@ -41,7 +42,7 @@ const Signup = () => {
         navigate("/home");
       }, 2000);
     }
-  }, [dispatch, navigate, authState.message,info]);
+  }, [dispatch, navigate, authState.message, info]);
 
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -118,7 +119,9 @@ const Signup = () => {
               <p>
                 Already a User ? <Link to="/login">Login .</Link>
               </p>
-              <button type="submit">CONTINUE</button>
+              <button type="submit">
+                {userRegister.loading ? "Loading" : "CONTINUE"}
+              </button>
             </form>
           </div>
         </div>

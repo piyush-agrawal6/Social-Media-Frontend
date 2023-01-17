@@ -5,6 +5,7 @@ const initialState = {
   userLogin: { loading: false, error: false, message: "" },
   userRegister: { loading: false, error: false, message: "" },
   userLogout: { message: "" },
+  deleteMessage: { message: "" },
   passwordChange: { message: "" },
   allUser: [],
   data: {
@@ -54,7 +55,6 @@ export default function authReducer(state = initialState, { type, payload }) {
           user: null,
         },
       };
-
     case types.REGISTER_USER_REQUEST:
       return {
         ...state,
@@ -96,17 +96,13 @@ export default function authReducer(state = initialState, { type, payload }) {
     case types.DELETE_USER_SUCCESS:
       return {
         ...state,
-        userLogout: { message: "Logout Successfully" },
-        data: {
-          isAuthenticated: false,
-          token: null,
-          user: null,
-        },
+        deleteMessage: payload,
       };
     case "RESET_CHANGE_PASSWORD_SUCCESS":
       return {
         ...state,
         passwordChange: "",
+        deleteMessage: "",
       };
     case types.CHANGE_PASSWORD_SUCCESS:
       return {

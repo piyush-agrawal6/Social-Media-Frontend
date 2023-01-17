@@ -36,7 +36,6 @@ export const authLogin = (data) => async (dispatch) => {
       "https://busy-jade-sawfish-cape.cyclic.app/auth/login",
       data
     );
-    console.log(res.data);
     dispatch({
       type: types.LOGIN_USER_SUCCESS,
       payload: {
@@ -105,11 +104,10 @@ export const deleteUser = (password, id) => async (dispatch) => {
       }
     );
     let data = await res.json();
-    console.log(data);
     dispatch({
       type: types.DELETE_USER_SUCCESS,
+      payload: data.message,
     });
-    console.log(data);
   } catch (error) {
     console.log(error);
   }
@@ -123,7 +121,6 @@ export const changePassword =
         `https://busy-jade-sawfish-cape.cyclic.app/user`,
         { id, oldpassword, newpassword }
       );
-      console.log(res.data);
       dispatch({
         type: types.CHANGE_PASSWORD_SUCCESS,
         payload: res.data.message,

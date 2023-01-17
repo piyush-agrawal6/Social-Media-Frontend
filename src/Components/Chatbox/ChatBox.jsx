@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./ChatBox.css";
-import InputEmoji from "react-input-emoji";
 import { useDispatch } from "react-redux";
 import { getSingleUser } from "../../Redux/auth/action";
 import { getUserMessage } from "../../Redux/chats/action";
@@ -13,7 +12,7 @@ const ChatBox = ({ data, userId }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    console.log(newMessage);
+    // console.log(newMessage);
   };
 
   const chatId = data?.member?.find((id) => id !== userId);

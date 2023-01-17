@@ -26,6 +26,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const authState = useSelector((state) => state.auth);
+  const { userLogin } = useSelector((state) => state.auth);
 
   React.useEffect(() => {
     if (authState.userLogin.message === "User doesn't Exist") {
@@ -89,7 +90,9 @@ const Login = () => {
               <p>
                 New User ? <Link to="/signup">Signup .</Link>
               </p>
-              <button type="submit">CONTINUE</button>
+              <button type="submit">
+                {userLogin.loading ? "Loading" : "CONTINUE"}
+              </button>
             </form>
           </div>
         </div>

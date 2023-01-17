@@ -9,7 +9,6 @@ const Chats = () => {
   const {
     data: { user },
   } = useSelector((store) => store.auth);
-  console.log(user);
   const [chats, setChats] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
