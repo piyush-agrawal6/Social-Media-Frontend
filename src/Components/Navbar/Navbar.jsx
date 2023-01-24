@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { GrChat } from "react-icons/gr";
-import { MdNotifications } from "react-icons/md";
-import { BsPeopleFill } from "react-icons/bs";
+// import { GrChat } from "react-icons/gr";
+// import { MdNotifications } from "react-icons/md";
+// import { BsPeopleFill } from "react-icons/bs";
 import { CgUserlane } from "react-icons/cg";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import logo from "./logo.svg";
 import sm from "./1.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { message } from "antd";
+import { MdHome } from "react-icons/md";
 const Navbar = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -38,6 +39,12 @@ const Navbar = () => {
           </div>
         </div>
         <div className="nav-item item-center"></div>
+        <div className="navIcons">
+          <Link to="/notifications">
+            <MdHome className="sideIcons" />
+            <p className="display">Home</p>
+          </Link>
+        </div>
         <div className="nav-item item-right">
           <div className="navIcons">
             <Link to="/profile">
@@ -45,7 +52,7 @@ const Navbar = () => {
               <p className="display">Profile</p>
             </Link>
           </div>
-          <div className="navIcons">
+          {/* <div className="navIcons">
             <Link to="/chats">
               <GrChat className="sideIcons" />
               <p className="display">Chats</p>
@@ -56,14 +63,15 @@ const Navbar = () => {
               <BsPeopleFill className="sideIcons" />
               <p className="display">People</p>
             </Link>
-          </div>
-          <div className="navIcons">
+          </div> */}
+
+          {/* <div className="navIcons">
             <Link to="/notifications">
               <MdNotifications className="sideIcons" />
               <span>1</span>
               <p className="display">Info</p>
             </Link>
-          </div>
+          </div> */}
           {isAuthenticated ? (
             <div className="navIcons">
               <Link

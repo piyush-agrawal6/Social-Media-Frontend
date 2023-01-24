@@ -1,26 +1,108 @@
 import React, { useState } from "react";
 import { BiCommentDetail } from "react-icons/bi";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { BiEdit } from "react-icons/bi";
+import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost } from "../../Redux/post/action";
 import Comment from "./Comment";
-
+import { Button, message, Modal, Popconfirm } from "antd";
 const SinglePost = ({ e }) => {
-  const [commentOpen, setCommentOpen] = useState(false);
   const {
     data: { user },
   } = useSelector((store) => store.auth);
   const [likes, setLikes] = useState(e.likes.includes(user._id));
+  const [formData, setFormData] = useState({
+    caption: e.desc,
+  });
+  const confirmDelete = (e) => {
+    console.log(e);
+    message.success("Click on Yes");
+  };
+
+  const cancelDelete = (e) => {
+    console.log(e);
+    message.error("Click on No");
+  };
+  const [commentOpen, setCommentOpen] = useState(false);
   const [liked, setLiked] = useState(e.likes.length);
 
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const handleFormChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const [open, setOpen] = useState(false);
+  const handleOk = () => {
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 2000);
+  };
+  const handleFormSubmit = () => {
+    if (formData.caption.trim() !== "") {
+      message.success("Post updated");
+      handleOk();
+    } else {
+      message.error("Please enter a new caption");
+    }
+  };
+  const handleCancel = () => {
+    setOpen(false);
+  };
+  const showModal = () => {
+    setOpen(true);
+  };
   const dispatch = useDispatch();
   const handleLike = (id) => {
     dispatch(likePost(id, user._id));
     setLikes(!likes);
     likes ? setLiked(liked - 1) : setLiked(liked + 1);
   };
+
   return (
     <div className="post">
+      {e.userId === user._id ? (
+        <p className="postEdit">
+          <Popconfirm
+            title="Delete the task"
+            description="Are you sure to delete this task?"
+            onConfirm={confirmDelete}
+            onCancel={cancelDelete}
+            okText="Yes"
+            cancelText="No"
+          >
+            <MdDelete />
+          </Popconfirm>{" "}
+          | <BiEdit onClick={showModal} />
+          <Modal
+            title="Edit details"
+            open={open}
+            onOk={handleOk}
+            confirmLoading={confirmLoading}
+            onCancel={handleCancel}
+            footer={[
+              <Button key="back" onClick={handleCancel}>
+                Cancel
+              </Button>,
+              <Button key="submit" onClick={handleFormSubmit}>
+                Edit
+              </Button>,
+            ]}
+          >
+            <form className="inputForm">
+              <input
+                name="caption"
+                value={formData.caption}
+                onChange={handleFormChange}
+                type="text"
+                placeholder="New Caption"
+              />
+            </form>
+          </Modal>
+        </p>
+      ) : null}
       <img src={e.image} alt="" />
       <div className="postDetails">
         <b>{e.name}</b>

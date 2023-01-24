@@ -20,7 +20,6 @@ const Followers = () => {
           return <SingleFollower e={e} key={i} />;
         }
       })}
-      <h3>See all of them</h3>
     </div>
   );
 };
