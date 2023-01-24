@@ -39,13 +39,14 @@ const Navbar = () => {
           </div>
         </div>
         <div className="nav-item item-center"></div>
-        <div className="navIcons">
-          <Link to="/notifications">
-            <MdHome className="sideIcons" />
-            <p className="display">Home</p>
-          </Link>
-        </div>
+
         <div className="nav-item item-right">
+          <div className="navIcons">
+            <Link to="/notifications">
+              <MdHome className="sideIcons" />
+              <p className="display">Home</p>
+            </Link>
+          </div>
           <div className="navIcons">
             <Link to="/profile">
               <CgUserlane className="sideIcons" />

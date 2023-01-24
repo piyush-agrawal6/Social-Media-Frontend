@@ -101,7 +101,7 @@
   font-size: 13px;
   padding: 15px;
   background-color: var(--cardColor);
-  height: 65vh;
+  height: auto;
   overflow: auto;
 }
 

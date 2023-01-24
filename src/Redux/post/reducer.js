@@ -42,6 +42,32 @@ export default function postReducer(state = initialState, { type, payload }) {
         postLoading: false,
         myPost: payload,
       };
+    case types.DELETE_POST_SUCCESS:
+      return {
+        ...state,
+        post: [...state.post.filter((elem) => elem._id !== payload.id)],
+        myPost: [...state.myPost.filter((elem) => elem._id !== payload.id)],
+      };
+    case types.EDIT_POST_SUCCESS:
+      return {
+        ...state,
+        post: [
+          ...state.post.filter((elem) => {
+            if (elem._id === payload.id) {
+              return payload.updatedPost;
+            }
+            return elem;
+          }),
+        ],
+        myPost: [
+          ...state.myPost.map((elem) => {
+            if (elem._id === payload.id) {
+              return payload.updatedPost;
+            }
+            return elem;
+          }),
+        ],
+      };
     default:
       return state;
   }

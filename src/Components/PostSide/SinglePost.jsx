@@ -4,7 +4,7 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { likePost } from "../../Redux/post/action";
+import { deletePost, editPost, likePost } from "../../Redux/post/action";
 import Comment from "./Comment";
 import { Button, message, Modal, Popconfirm } from "antd";
 const SinglePost = ({ e }) => {
@@ -15,18 +15,15 @@ const SinglePost = ({ e }) => {
   const [formData, setFormData] = useState({
     caption: e.desc,
   });
-  const confirmDelete = (e) => {
-    console.log(e);
-    message.success("Click on Yes");
+
+  const dispatch = useDispatch();
+  const confirmDelete = (id) => {
+    dispatch(deletePost(id, user._id));
+    message.success("Post Delete");
   };
 
-  const cancelDelete = (e) => {
-    console.log(e);
-    message.error("Click on No");
-  };
   const [commentOpen, setCommentOpen] = useState(false);
   const [liked, setLiked] = useState(e.likes.length);
-
   const [confirmLoading, setConfirmLoading] = useState(false);
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,8 +37,9 @@ const SinglePost = ({ e }) => {
       setConfirmLoading(false);
     }, 2000);
   };
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (id) => {
     if (formData.caption.trim() !== "") {
+      dispatch(editPost(id, user._id, formData.caption.trim()));
       message.success("Post updated");
       handleOk();
     } else {
@@ -54,7 +52,6 @@ const SinglePost = ({ e }) => {
   const showModal = () => {
     setOpen(true);
   };
-  const dispatch = useDispatch();
   const handleLike = (id) => {
     dispatch(likePost(id, user._id));
     setLikes(!likes);
@@ -66,18 +63,15 @@ const SinglePost = ({ e }) => {
       {e.userId === user._id ? (
         <p className="postEdit">
           <Popconfirm
-            title="Delete the task"
-            description="Are you sure to delete this task?"
-            onConfirm={confirmDelete}
-            onCancel={cancelDelete}
-            okText="Yes"
-            cancelText="No"
+            title="Delete the post"
+            description="Are you sure to delete this post?"
+            onConfirm={() => confirmDelete(e._id)}
           >
             <MdDelete />
           </Popconfirm>{" "}
           | <BiEdit onClick={showModal} />
           <Modal
-            title="Edit details"
+            title="Edit Caption"
             open={open}
             onOk={handleOk}
             confirmLoading={confirmLoading}
@@ -86,7 +80,7 @@ const SinglePost = ({ e }) => {
               <Button key="back" onClick={handleCancel}>
                 Cancel
               </Button>,
-              <Button key="submit" onClick={handleFormSubmit}>
+              <Button key="submit" onClick={() => handleFormSubmit(e._id)}>
                 Edit
               </Button>,
             ]}

@@ -20,7 +20,7 @@ const SingleFollower = ({ e }) => {
         <img src={e.profilePicture} alt="" className="followersImg" />
         <div className="followersName">
           <span>{e.name}</span>
-          <span>{e.username}</span>
+          <span>@`{e.username}</span>
         </div>
       </div>
       <button onClick={() => handleFollow(e._id)} className={following?"unfollowBtn":"followBtn"}>

@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { postComment } from "../../Redux/post/action";
+import { editComment, postComment } from "../../Redux/post/action";
 import "./Comment.css";
-const Comment = ({ data, e }) => {
+const Comment = ({ data, e: postId }) => {
   const [comments, setComments] = useState(data);
   const [text, setText] = useState("");
   const {
@@ -17,18 +17,14 @@ const Comment = ({ data, e }) => {
   const success = (text) => {
     messageApi.success(text);
   };
+  const error = (text) => {
+    messageApi.error(text);
+  };
   const [formData, setFormData] = useState({
-    comment: e.desc,
+    comment: "",
   });
-  const confirmDelete = (e) => {
-    console.log(e);
-    message.success("Click on Yes");
-  };
+  const confirmDelete = (e) => {};
 
-  const cancelDelete = (e) => {
-    console.log(e);
-    message.error("Click on No");
-  };
   const [confirmLoading, setConfirmLoading] = useState(false);
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,12 +38,13 @@ const Comment = ({ data, e }) => {
       setConfirmLoading(false);
     }, 2000);
   };
-  const handleFormSubmit = () => {
-    if (formData.caption.trim() !== "") {
-      message.success("Post updated");
+  const handleFormSubmit = (commentId) => {
+    if (formData.comment.trim() !== "") {
+      dispatch(editComment(postId, commentId, formData.comment));
+      message.success("Comment updated");
       handleOk();
     } else {
-      message.error("Please enter a new caption");
+      message.error("Please enter a new Comment");
     }
   };
   const handleCancel = () => {
@@ -64,9 +61,13 @@ const Comment = ({ data, e }) => {
       image: user.profilePicture,
       name: user.name,
     };
-    dispatch(postComment(data, e));
-    setComments([...comments, data]);
-    success("Comment posted successfully");
+    if (data.comment.trim() !== "") {
+      dispatch(postComment(data, postId));
+      setComments([...comments, data]);
+      success("Comment posted successfully");
+    } else {
+      error("Please enter a comment");
+    }
   };
 
   return (
@@ -92,12 +93,9 @@ const Comment = ({ data, e }) => {
               {elem.id === user._id ? (
                 <div className="commentEdit">
                   <Popconfirm
-                    title="Delete the task"
-                    description="Are you sure to delete this task?"
+                    title="Delete the comment"
+                    description="Are you sure to delete this comment?"
                     onConfirm={confirmDelete}
-                    onCancel={cancelDelete}
-                    okText="Yes"
-                    cancelText="No"
                   >
                     <MdDelete />
                   </Popconfirm>{" "}
@@ -112,7 +110,10 @@ const Comment = ({ data, e }) => {
                       <Button key="back" onClick={handleCancel}>
                         Cancel
                       </Button>,
-                      <Button key="submit" onClick={handleFormSubmit}>
+                      <Button
+                        key="submit"
+                        onClick={() => handleFormSubmit(elem._id)}
+                      >
                         Edit
                       </Button>,
                     ]}
