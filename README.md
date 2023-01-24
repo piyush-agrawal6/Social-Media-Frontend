@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Diverse - Lets get deversify.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Diverse is a social media chatting app where the user can interect with different peaple, can post images, comments, like and message each other. User can add , edit and delete posts, comments and their details. Users can also follow and unfollow each other.
 
-## Available Scripts
+![logo](https://user-images.githubusercontent.com/100460788/214284152-e74df401-40d9-414c-84f9-a20903bd8044.png)
 
-In the project directory, you can run:
+## Tech Stack
 
-### `yarn start`
+**Client:** 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**
+- **Redux Thunk**
+- **Axios**
+- **CSS**
+- **Ant-Designs**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Server:**
 
-### `yarn test`
+- **Node Js**
+- **Mongo DB**
+- **Express Js**
+- **Bcrypt**
+- **JWT**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deployment
 
-### `yarn build`
+Client - Netlify
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Server - Cyclic
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔗 Links
+Client - https://diversely.netlify.app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Server - https://busy-jade-sawfish-cape.cyclic.app
 
-### `yarn eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Post , delete , edit images
+- like , comment on the posts
+- update profile and cover picture
+- delete account and change password 
+- Follow and unfollow users
+- Proper Responsiveness
+- Login / signup authentication
+- form validation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Screenshots
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Home page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![24 01 2023_17 26 21_REC](https://user-images.githubusercontent.com/100460788/214285675-6ce465cf-64e6-491f-961a-ee6ac3b776c0.png)
 
-## Learn More
+2. Profile page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![24 01 2023_17 26 51_REC](https://user-images.githubusercontent.com/100460788/214285664-e3aa11eb-b577-4337-ba2c-2f870ca5b0a8.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. login page
 
-### Code Splitting
+![24 01 2023_17 27 53_REC](https://user-images.githubusercontent.com/100460788/214285944-c8a06b5e-55f3-4b57-a6ea-9200ac5ba25f.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Blog / Presentation
 
-### Analyzing the Bundle Size
+Presentation -
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Blog -
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributors
 
-### Advanced Configuration
+- [@Piyush Agrawal](https://github.com/piyush-agrawal6)
+- [@Rajendra patel](https://github.com/centauricoder01)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
