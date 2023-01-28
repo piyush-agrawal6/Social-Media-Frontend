@@ -4,6 +4,5 @@
   margin: 1rem 10px;
   flex-direction: column;
   gap: 1rem;
-  height: 120vh;
   overflow: auto;
 }
