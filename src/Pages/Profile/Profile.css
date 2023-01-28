@@ -19,7 +19,7 @@
   flex-direction: column;
   gap: 1rem;
   margin: 10px;
-  height: 110vh;
+  /* height: 110vh; */
   overflow: auto;
 }
 .hide {
