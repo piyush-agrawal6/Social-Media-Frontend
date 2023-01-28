@@ -10,7 +10,6 @@
   flex-direction: column;
   gap: 1rem;
   margin: 10px;
-  background-color: var(--cardColor);
   border-radius: 1rem;
   padding: 10px;
 }
