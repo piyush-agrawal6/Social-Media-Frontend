@@ -36,12 +36,19 @@ Server - https://busy-jade-sawfish-cape.cyclic.app
 ## Features
 
 -Post, delete, and edit images
+
 -Like, comment on the posts
+
 -update profile and cover picture
+
 -Delete the account and change the password
+
 -Follow and unfollow users
+
 -Proper Responsiveness
+
 -Login/signup authentication
+
 -Form validation
 
 
