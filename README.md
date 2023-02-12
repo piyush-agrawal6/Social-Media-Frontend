@@ -1,6 +1,6 @@
 # Diverse - Lets get deversify.
 
-Diverse is a social media chatting app where the user can interect with different peaple, can post images, comments, like and message each other. User can add , edit and delete posts, comments and their details. Users can also follow and unfollow each other.
+Diverse is a social media chatting app where users can interact with different people, post images, comment, like and message each other. Users can add, edit and delete posts, comments and their details. Users can also follow and unfollow each other.
 
 ![logo](https://user-images.githubusercontent.com/100460788/214284152-e74df401-40d9-414c-84f9-a20903bd8044.png)
 
