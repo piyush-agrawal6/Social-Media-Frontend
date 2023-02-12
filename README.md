@@ -60,10 +60,7 @@ Server - https://busy-jade-sawfish-cape.cyclic.app
 
 ## Blog / Presentation
 
-Presentation -
-
-Blog -
-
+Presentation - https://drive.google.com/file/d/1qEAkelnlGGlWfVS7Gaa9-vaGtNlImhDg/view?usp=share_link
 
 ## Contributors
 
